@@ -47,7 +47,7 @@ namespace ConsoleApp1 {
             if (locarLivro == 1 || locarLivro == 2) {
                 Console.WriteLine("Livro Locado!");
             } else {
-                Console.WriteLine("Digite o número correto!");
+                Console.WriteLine("Digite o número correto!");//final
 
             }
         }
