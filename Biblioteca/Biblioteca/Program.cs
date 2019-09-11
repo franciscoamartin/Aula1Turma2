@@ -45,10 +45,10 @@ namespace ConsoleApp1 {
             int locarLivro = int.Parse(Console.ReadLine());
 
             if (locarLivro == 1 || locarLivro == 2) {
-                Console.WriteLine("Livro Locado!");
+                Console.WriteLine("Livro Locado!"); 
             } else {
                 Console.WriteLine("Digite o número correto!");
-
+                 
             }
         }
 
