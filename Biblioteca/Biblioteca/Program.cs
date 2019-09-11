@@ -42,12 +42,21 @@ namespace ConsoleApp1 {
 
             Console.WriteLine("Escolha o livro pelo número: ");
 
-            int Escolherlivro = int.Parse(Console.ReadLine());
+            int escolherlivro = int.Parse(Console.ReadLine());
             for (int i = 0; i < livros1.Length; i++) {
 
             }
-            Console.WriteLine("Livro escolhido foi " + livros1[Escolherlivro-1].ToString());
+            Console.WriteLine("Livro escolhido foi " + livros1[escolherlivro-1].ToString());
+            Console.WriteLine("Você quer locar esse livro? (1)SIM (2)NÃO");
+            int locarLivro = int.Parse(Console.ReadLine);
 
+            if(locarLivro == "1" || locarLivro == "2") {
+                Console.WriteLine("Livro Locado!");
+            }
+            else { 
+                Console.WriteLine("Digite o número correto!");
+                
+            }
         }
 
 
