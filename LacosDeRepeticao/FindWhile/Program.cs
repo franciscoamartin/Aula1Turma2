@@ -27,8 +27,6 @@ namespace FindWhile
             var lengthText = contentToFind.Length - (wordFindCountLength - 1);
             var contWordFind = 0;
 
-
-
             for (int i = 0; i < lengthText; i++)
             {
                 var compareWord = string.Empty;
