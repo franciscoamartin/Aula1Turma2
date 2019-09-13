@@ -11,31 +11,51 @@ namespace Exerc07Version02
             int contadorA = 0;
             int contadorE = 0;
             int contadorI = 0;
+            int contadorO = 0;
+            int contadorU = 0;
 
-            var letraA = texto.Length;
 
 
-            for (int i = 0; i < letraA; i++)
-                if(texto[i].ToString() == "a")
+            var tamanhoTexto = texto.Length;
+
+
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "a")
                 {
                     contadorA++;
-                    Console.WriteLine("Quantidade de " + contadorA);
                 }
+            Console.WriteLine("Quantidade de 'a' no texto " + contadorA);
 
-            for (int i = 0; i < letraA; i++)
-                if (texto[i].ToString() == "a")
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "e")
                 {
                     contadorE++;
-                    Console.WriteLine("Quantidade de " + contadorE);
+
                 }
-            for (int i = 0; i < letraA; i++)
-                if (texto[i].ToString() == "a")
+            Console.WriteLine("Quantidade de 'e' no texto " + contadorE);
+
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "i")
                 {
                     contadorI++;
-                    Console.WriteLine("Quantidade de " + contadorI);
                 }
+            Console.WriteLine("Quantidade de 'i' no texto " + contadorI);
 
-                    Console.ReadKey();
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "o")
+                {
+                    contadorO++;
+                }
+            Console.WriteLine("Quantidade de 'o' no texto " + contadorO);
+
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "u")
+                {
+                    contadorU++;
+                }
+            Console.WriteLine("Quantidade de 'u' no texto " + contadorU);
+
+            Console.ReadKey();
 
         }
     }
