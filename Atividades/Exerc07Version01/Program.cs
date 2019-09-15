@@ -1,103 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exerc07Version01
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Digite a palavra: ");
-            var wordCount = Console.ReadLine();
-            for (int i = 0; i <= 5; i++)
-            {
+            Console.WriteLine("Digite um texto:");
+            string texto = Console.ReadLine();
+            int contadorA = 0;
+            int contadorE = 0;
+            int contadorI = 0;
+            int contadorO = 0;
+            int contadorU = 0;
 
+            var tamanhoTexto = texto.Length;
 
-                var result = FindByFor(wordCount);
-                Console.WriteLine($"Número de palavras: {result}");
-                Console.ReadKey();
-            }
-        }
-
-        /// <summary>
-        /// Metodo de busca dentro da aplicacao
-        /// </summary>
-        /// <param name="wordFind">Paramentro de ate 3 caracteres </param>
-        /// <returns>Retorna a quantidade encontrada da expressao</returns>
-        private static int FindByFor(string wordFind)
-        {
-            var contentToFind = TextContent();
-            var wordFindCountLength = wordFind.Length;
-            var lengthText = contentToFind.Length - (wordFindCountLength - 1);
-            var contWordFind = 0;
-
-            for (int i = 0; i < lengthText; i++)
-            {
-                var compareWord = string.Empty;
-                var b = 0;
-                while (b < wordFindCountLength)
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "a" || texto[i].ToString() == "A")
                 {
-                    compareWord += contentToFind[i + b].ToString();
-                    b++;
+                    contadorA++;
                 }
+            Console.WriteLine("Quantidade de letras 'a' no texto é: " + contadorA);
 
-                if (wordFind == compareWord)
-                    contWordFind++;
-            }
-            return contWordFind;
-        }
-
-        private static int FindByWhile(string wordFind)
-        {
-
-            var contentToFind = TextContent();
-            var wordFindCountLength = wordFind.Length;
-            var lengthText = contentToFind.Length - (wordFindCountLength - 1);
-            var i = 0;
-            var contWordFind = 0;
-
-
-            while (i < lengthText)
-            {
-                var compareWord = string.Empty;
-                var b = 0;
-                while (b < wordFindCountLength)
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "e" || texto[i].ToString() == "E")
                 {
-                    compareWord += contentToFind[i + b].ToString();
-                    b++;
+                    contadorE++;
                 }
+            Console.WriteLine("Quantidade de letras 'e' no texto é: " + contadorE);
 
-                if (wordFind == compareWord)
-                    contWordFind++;
-                i++;
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "i" || texto[i].ToString() == "I")
+                {
+                    contadorI++;
+                }
+            Console.WriteLine("Quantidade de letras 'i' no texto é: " + contadorI);
 
-            }
-            return contWordFind;
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "o" || texto[i].ToString() == "O")
+                {
+                    contadorO++;
+                }
+            Console.WriteLine("Quantidade de letras 'o' no texto é: " + contadorO);
+
+            for (int i = 0; i < tamanhoTexto; i++)
+                if (texto[i].ToString() == "u" || texto[i].ToString() == "U")
+                {
+                    contadorU++;
+                }
+            Console.WriteLine("Quantidade de letras 'u' no texto é: " + contadorU);
+
+            Console.ReadKey();
+
         }
-
-        /// <summary>
-        /// esse metodo retorna um texto para analisar
-        /// </summary>
-        /// <returns> conteudo do texto em string</returns>
-        private static void  TextContent()
-        {
-            string[] contadorDePalavras = { "a", "e", "i", "o", "u" };
-            int i = 0;
-
-            for (i = 0; i < contadorDePalavras.Length; i++)
-            {
-                string contador = contadorDePalavras[i];
-                 Console.WriteLine($"números de palavras '{contadorDePalavras[i]}'");
-
-
-
-            }
-        }
-
     }
 }
-

@@ -15,10 +15,8 @@ namespace Exerc07Version02
             int contadorU = 0;
 
 
-
             var tamanhoTexto = texto.Length;
-
-
+            
             for (int i = 0; i < tamanhoTexto; i++)
                 if (texto[i].ToString() == "a")
                 {
@@ -30,7 +28,6 @@ namespace Exerc07Version02
                 if (texto[i].ToString() == "e")
                 {
                     contadorE++;
-
                 }
             Console.WriteLine("Quantidade de 'e' no texto " + contadorE);
 

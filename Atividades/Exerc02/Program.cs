@@ -15,7 +15,7 @@ namespace Exerc02
             Console.WriteLine("-----------");
             Console.WriteLine("Digite seu nome completo");
             string nome = Console.ReadLine();
-            Console.WriteLine($"Seja bem vindo{nome}");
+            Console.WriteLine($"Seja bem vindo {nome}");
             Console.ReadKey();
         }
     }
