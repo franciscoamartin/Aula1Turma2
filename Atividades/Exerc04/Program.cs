@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exerc04
 {
@@ -12,11 +8,9 @@ namespace Exerc04
         {
             Console.WriteLine("Digite uma palavra: ");
             string entradaUsuario = Console.ReadLine();
-
-            Console.WriteLine($"O tamanho deste nome é: {entradaUsuario.Length}");
+            var textoFinal = entradaUsuario.Replace(" ", "");
+            Console.WriteLine($"A quantidade de caracteres é: {textoFinal.Length}");
             Console.ReadKey();
-
-
 
         }
     }

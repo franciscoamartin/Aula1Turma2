@@ -13,9 +13,14 @@ namespace Exerc05
 
             Console.WriteLine("Digite uma palavra: ");
             string palavra = Console.ReadLine();
-            int resultado = palavra.IndexOf(palavra, 2);
-            
-            Console.WriteLine(resultado);
+
+            var quantidade = palavra.Length;
+
+            var inicio = palavra.Substring(0, 1);
+            var final = palavra.Substring(quantidade - 1, 1);
+
+            Console.WriteLine("Primeiro caractere é ' " + inicio + " '");
+            Console.WriteLine("Último caractere é ' " + final + " '");
             Console.ReadKey();
         }
     }

@@ -11,6 +11,8 @@ namespace Exerc01
         static void Main(string[] args)
         {
             Console.WriteLine("Boa vindas");
+            Console.WriteLine("Aperte qualquer tecla para finalizar");
+
             Console.ReadKey();
         }
     }
