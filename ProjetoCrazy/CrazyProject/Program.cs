@@ -30,7 +30,7 @@ namespace CrazyProject
             switch (resultado)
             {
                 case 1:
-                   Arvore();
+                    Iniciar();   
                     //ArvoreFixa();
                     break;
                 case 2:
@@ -51,7 +51,6 @@ namespace CrazyProject
                     break;
             }
         }
-
 
         private static void ArvoreFixa()
         {

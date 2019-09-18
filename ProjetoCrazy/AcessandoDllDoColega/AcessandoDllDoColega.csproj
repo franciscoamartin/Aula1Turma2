@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98612047-2586-4CA8-B791-EB43688259D9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MinhaBiblioteca</RootNamespace>
-    <AssemblyName>MinhaBiblioteca</AssemblyName>
+    <ProjectGuid>{BA23B717-C938-4FD0-B0C4-FC7BBF003BAF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AcessandoDllDoColega</RootNamespace>
+    <AssemblyName>AcessandoDllDoColega</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,6 +33,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Biblioteca">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\FernandoSS\Biblioteca.dll</HintPath>
+    </Reference>
+    <Reference Include="Bibliotecas">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\Gian Carlo G\Bibliotecas.dll</HintPath>
+    </Reference>
+    <Reference Include="CalopsitaRoxa">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\CalopsitaRoxa.dll</HintPath>
+    </Reference>
+    <Reference Include="Daniel.Ramos">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\Daniel Ramos\Daniel.Ramos.dll</HintPath>
+    </Reference>
+    <Reference Include="DeveEstarTudoAiDj">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\DeveEstarTudoAiDj.dll</HintPath>
+    </Reference>
+    <Reference Include="MinhaBiblicoteca">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\JeanCarlosPrim\MinhaBiblicoteca.dll</HintPath>
+    </Reference>
+    <Reference Include="MinhaBiblioteca">
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\Priscilla\MinhaBiblioteca.dll</HintPath>
+    </Reference>
+    <Reference Include="MinhaBiblioteca1">
+      <HintPath>..\..\..\..\..\Desktop\MinhaBiblioteca1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,16 +67,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculosDeArea.cs" />
-    <Compile Include="ListaCarros.cs" />
-    <Compile Include="ListaCervejas.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Arvore\Arvore.csproj">
-      <Project>{f3341d4e-8177-4ef5-bffb-ddb92874edf3}</Project>
-      <Name>Arvore</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
