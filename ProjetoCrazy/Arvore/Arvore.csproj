@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20DEA38B-63D3-4A2F-8E4B-C5BE8E2F164E}</ProjectGuid>
+    <ProjectGuid>{F3341D4E-8177-4EF5-BFFB-DDB92874EDF3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CrazyProject</RootNamespace>
-    <AssemblyName>CrazyProject</AssemblyName>
+    <RootNamespace>Arvore</RootNamespace>
+    <AssemblyName>Arvore</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,8 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,12 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Arvore\Arvore.csproj">
-      <Project>{f3341d4e-8177-4ef5-bffb-ddb92874edf3}</Project>
-      <Name>Arvore</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

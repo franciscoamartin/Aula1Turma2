@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static CrazyProjects.Program;
 
 namespace CrazyProject
 {
@@ -10,44 +8,82 @@ namespace CrazyProject
     {
         static void Main(string[] args)
         {
-            ListaCervejas();
+            Menu();
+
             Console.ReadKey();
         }
 
-        //private static void Arvore()
-        //{
+        private static void Menu()
+        {
+            Console.WriteLine("Bem Vindo ao Crazy Project");
+            Console.WriteLine();
+            Console.WriteLine("Digite um número do Menu abaixo");
+            Console.WriteLine("--------------------------------");
+            Console.WriteLine("Visualizar uma árvore (1)");
+            Console.WriteLine("Calcular área do quadrado (2)");
+            Console.WriteLine("Listar Cervejas da AMBEV (3)");
+            Console.WriteLine("Listar as Marcas de Carro (4)");
+            Console.WriteLine("Sair do programa (5)");
+            int resultado = int.Parse(Console.ReadLine());
 
-        //    int ascii = 65;
-        //    Console.OutputEncoding = Encoding.UTF8;
-        //    int numberOfRows = 20;
-        //    for (int i = 1; i <= numberOfRows; i++)
-        //    {
-        //        int starCount = 0;
-        //        for (int j = 1; j <= numberOfRows – i; j++)
-        //        {
-        //        Console.Write(" ");
-        //    }
-        //    while (2 * i – 1 != starCount)
-        //        {
-        //        Console.Write(Convert.ToChar(ascii + starCount));
-        //        starCount++;
-        //    }
-        //    Console.WriteLine("");
-        //}
-        //Console.ReadKey();
-        //}
+            switch (resultado)
+            {
+                case 1:
+                    Arvore();
+                    break;
+                case 2:
+                    Console.WriteLine("Digite um valor para calcular a área do quadrado: ");
+                    CalcularQuadrado(double.Parse(Console.ReadLine()));
+                    break;
+                case 3:
+                    ListaCervejas();
+                    break;
+                case 4:
+                    MarcaDeCarros();
+                    break;
+                case 5:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Digite um valor válido");
+                    break;
+            }
+        }
 
+        private static void Arvore()
+        {
+            Iniciar();
+        }
 
         private static void ListaCervejas()
         {
             List<string> cervejas = new List<string> { "Skol", "Brahma", "Antarctica", "Patagonia", "Stella Artois", "Skol", "Polar" };
+            Console.WriteLine("Marcas de Cervejas AMBEV: ");
 
             foreach (var item in cervejas)
-            
+
                 Console.WriteLine(item);
-           
+            Console.WriteLine("--------------------------");
         }
 
+        private static void CalcularQuadrado(double square)
+        {
+            square = square * square;
+            Console.WriteLine("Resultado da área do quadrado: " + square);
+            Console.WriteLine("--------------------------");
+        }
+
+        private static void MarcaDeCarros()
+        {
+            Console.WriteLine("Marca dos principais Carros: ");
+
+            List<string> marcas = new List<string> { "Ford", "Tesla", "Volvo", "Fiat", "Kia", "Honda" };
+
+            foreach (var item in marcas)
+
+                Console.WriteLine(item);
+            Console.WriteLine("--------------------------");
+        }
     }
 }
 
