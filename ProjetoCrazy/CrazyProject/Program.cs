@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using static CrazyProjects.Program;
+using System.Globalization;
 
 namespace CrazyProject
 {
@@ -29,7 +30,8 @@ namespace CrazyProject
             switch (resultado)
             {
                 case 1:
-                    Arvore();
+                   Arvore();
+                    //ArvoreFixa();
                     break;
                 case 2:
                     Console.WriteLine("Digite um valor para calcular a área do quadrado: ");
@@ -50,6 +52,24 @@ namespace CrazyProject
             }
         }
 
+
+        private static void ArvoreFixa()
+        {
+            Console.WriteLine("        *");
+            Console.WriteLine("       ***");
+            Console.WriteLine("      *****");
+            Console.WriteLine("     ********");
+            Console.WriteLine("    *********");
+            Console.WriteLine("  *************");
+            Console.WriteLine(" ****************");
+            Console.WriteLine("******************");
+            Console.WriteLine("      **");
+            Console.WriteLine("      **");
+            Console.WriteLine("      **");
+            Console.WriteLine("      **");
+            Console.WriteLine("      **");
+
+        }
         private static void Arvore()
         {
             Iniciar();

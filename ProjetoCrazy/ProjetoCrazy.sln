@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrazyProject", "CrazyProjec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvore", "Arvore\Arvore.csproj", "{F3341D4E-8177-4EF5-BFFB-DDB92874EDF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinhaBiblioteca", "MinhaBiblioteca\MinhaBiblioteca.csproj", "{98612047-2586-4CA8-B791-EB43688259D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformacoesObtidas", "InformacoesObtidas\InformacoesObtidas.csproj", "{AB06EAA6-AA9E-4AA2-B04D-040D42D5C6B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F3341D4E-8177-4EF5-BFFB-DDB92874EDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3341D4E-8177-4EF5-BFFB-DDB92874EDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3341D4E-8177-4EF5-BFFB-DDB92874EDF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98612047-2586-4CA8-B791-EB43688259D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98612047-2586-4CA8-B791-EB43688259D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98612047-2586-4CA8-B791-EB43688259D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98612047-2586-4CA8-B791-EB43688259D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB06EAA6-AA9E-4AA2-B04D-040D42D5C6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB06EAA6-AA9E-4AA2-B04D-040D42D5C6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB06EAA6-AA9E-4AA2-B04D-040D42D5C6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB06EAA6-AA9E-4AA2-B04D-040D42D5C6B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

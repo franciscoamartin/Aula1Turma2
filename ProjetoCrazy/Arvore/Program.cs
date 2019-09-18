@@ -19,14 +19,14 @@ namespace CrazyProjects
 
         public static void Iniciar()
         {
-            Image image = Image.FromFile(@"C:\Users\franc\OneDrive\Área de Trabalho\1KILE.gif");
+            Image image = Image.FromFile(@"C:\Users\900103\Desktop\terra1.gif");
             FrameDimension dimension = new FrameDimension(image.FrameDimensionsList[0]);
             int frameCount = image.GetFrameCount(dimension);
             StringBuilder sb;
 
             int left = Console.WindowLeft, top = Console.WindowTop;
 
-            char[] chars = { '#', '#', '@', '%', '=', '+', '*', ':', '-', '.', ' ' };
+            char[] chars = { '.', '#', '@', '%', '=', '+', '*', ':', '-', '.', ' ' };
 
             for (int i = 0; ; i = (i + 1) % frameCount)
             {
@@ -49,7 +49,7 @@ namespace CrazyProjects
                 Console.SetCursorPosition(left, top);
                 Console.Write(sb.ToString());
 
-                System.Threading.Thread.Sleep(600);
+                System.Threading.Thread.Sleep(200);
             }
         }
 
