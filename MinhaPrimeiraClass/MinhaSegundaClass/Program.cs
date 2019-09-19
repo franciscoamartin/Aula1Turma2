@@ -18,14 +18,14 @@ namespace MinhaSegundaClass
             {
                 NomeFruta = "Laranja",
                 QuantidadeFruta = 20
-            }); ;
+            }); 
 
             minhaCestaFrutas.Add(new Frutas
             {
                 NomeFruta = "Maça",
                 QuantidadeFruta = 10
 
-            }); ;
+            });
 
             minhaCestaFrutas.ForEach(i => Console.WriteLine($"Cesta de Frutas > Fruta: {i.NomeFruta} Quantidade: {i.QuantidadeFruta}"));
 
