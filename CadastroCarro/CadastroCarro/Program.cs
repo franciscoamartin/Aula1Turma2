@@ -79,7 +79,7 @@ namespace CadastroCarro
             double valor = double.Parse(Console.ReadLine());
             Console.Write("Placa do veículo: ");
             string placa = Console.ReadLine();
-            string verificacao = VerificacaoDadosCPF(placa); ;
+           // string verificacao = VerificacaoDadosCPF(placa); 
 
             carros.Add(new Carro
             {

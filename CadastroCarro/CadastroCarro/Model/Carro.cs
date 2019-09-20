@@ -18,7 +18,7 @@ namespace CadastroCarro.Model
         public override string ToString()
         {
             string list = string.Empty;
-            list = "Marca: " +  Marca + "Modelo: " + Modelo + "Ano: " + Ano + " Valor: " + Valor + "Placa" + Placa;
+            list = " Marca: " +  Marca + " Modelo: " + Modelo + " Ano: " + Ano + "  Valor: " + Valor + " Placa: " + Placa;
             return list;
         }
     }
