@@ -29,7 +29,9 @@ namespace InterfaceBiblioteca
         /// </summary>
         /// <returns>retorna verdadeiro quando o login e senha informados estiverem corretos</returns>
         private static bool RealizaLoginSistema()
-        {
+                               {
+
+            Console.Clear();
             Console.WriteLine("Informe seu login e senha para acessar o sistema: ");
 
             Console.Write("Login: ");
@@ -80,8 +82,9 @@ namespace InterfaceBiblioteca
                         MostrarLivros();
                         break;
                     case 4:
-                        TrocarUsuario();
-                        break;
+                        while (!RealizaLoginSistema())
+                            Console.WriteLine("Login e senha inválidos");
+                      break;
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Saindo...");
