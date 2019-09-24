@@ -9,31 +9,13 @@ namespace LocacaoBiblioteca.Controller
 {
     public class LivrosController
     {
-        private int idCount = 1;
+
+        private LocacaoContext contexDB = new LocacaoContext();
         public LivrosController()
         {
-            
-            Livros = new List<Livros>();
 
-            //Console.WriteLine( "Numero um livro" );
-            //string addId = Console.ReadLine();
-
-            //Console.WriteLine("Adicione um livro");
-            //string addLivro = Console.ReadLine();
-
-            //Livros.Add(new Livros(int.Parse(addLivro),addId));
-
-            //Livros.Add(new Livros
-            //{
-            //    Nome = "Meu primeiro"
-            //});
-
-            //Livros.Add(new Livros
-            //{
-            //    Nome = "Meu Segundo"
-            //});
         }
-        private List<Livros> Livros { get; set; }
+        //private List<Livros> Livros { get; set; }
 
         /// <summary>
         /// Metodo que adiciona o livro em nossa lista ja instanciada criada dentro do construtor
@@ -41,17 +23,25 @@ namespace LocacaoBiblioteca.Controller
         /// <param name="parametroLivro">informacaoes do livro que vamos adicionar</param>
         public void AdicionarLivro(Livros parametroLivro)
         {
-
             //adicionamos o livro em nossa lista
-            Livros.Add(parametroLivro);
             parametroLivro.DataCriacao = DateTime.Now;
-            parametroLivro.Id = idCount;
-            idCount++;
-
+            parametroLivro.Id = contexDB.IdContadorLivros++;
+            contexDB.ListaDeLivros.Add(parametroLivro);
         }
         public List<Livros> RetornaListaDeLivros()
         {
-            return Livros;
+            return contexDB.ListaDeLivros.Where(x => x.Ativo).ToList<Livros>();
+        }
+        public void RemoverLivro(int identification)
+        {
+            var livro = contexDB.ListaDeLivros.FirstOrDefault(x => x.Id == identification);
+            //tratamento de valores inválidos.
+            if (livro != null)
+            {
+                livro.Ativo = false;
+                Console.WriteLine("Livro removido com sucesso");
+            }
+            //Console.WriteLine("Digite um valor valido");
         }
     }
 }

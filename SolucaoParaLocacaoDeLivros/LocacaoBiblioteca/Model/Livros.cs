@@ -13,7 +13,7 @@ namespace LocacaoBiblioteca.Model
 
         public string Nome { get; set; }
 
-        public bool Ativo { get; set; }
+        public bool Ativo { get; set; } = true; // tornar default todos os livros
 
         public int UsuarioCriacao { get; set; }
 

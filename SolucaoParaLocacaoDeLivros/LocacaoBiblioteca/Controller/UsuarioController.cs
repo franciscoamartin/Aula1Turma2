@@ -14,8 +14,8 @@ namespace LocacaoBiblioteca.Controller
     public class UsuarioController
 
     {
+        private LocacaoContext contexDB = new LocacaoContext();
         //criando privado para impedir o programador de adicionar um ID ou alterar fora da classe.
-        private int IdCount = 1;
 
         /// <summary>
         /// Metodo que realiza o login dentro do nosso sistema
@@ -40,19 +40,6 @@ namespace LocacaoBiblioteca.Controller
         //    return true;
         //}
 
-        public UsuarioController()
-        {
-            UsuarioLista = new List<Usuario>();
-
-            UsuarioLista.Add(new Usuario
-            {
-                Id = IdCount++, // adiciono o id contador incrementando o mesmo com ele +1
-                Login = "admin",
-                Senha = "admin",
-            });
-
-        }
-        private List<Usuario> UsuarioLista { get; set; }
 
         /// <summary>
         /// metodo usado para adicionar um novo usuario no sistema
@@ -61,15 +48,15 @@ namespace LocacaoBiblioteca.Controller
         public void AdicionarUsuario(Usuario parametroUsuario)
         {
             //adiciono o meu usuario a minha lista.
-            UsuarioLista.Add(parametroUsuario);
+            contexDB.ListaDeUsuarios.Add(parametroUsuario);
             parametroUsuario.DataCriacao = DateTime.Now;
-            parametroUsuario.Id = IdCount++;
+            parametroUsuario.Id = contexDB.IdContadorUsuarios++;
         }
 
         //metodo default para todos os usuários para ativo.
         public List<Usuario> RetornaListaDeUsuarios()
         {
-            return UsuarioLista.Where(x => x.Ativo).ToList<Usuario>();
+            return contexDB.ListaDeUsuarios.Where(x => x.Ativo).ToList<Usuario>();
         }
 
         /// <summary>
@@ -80,9 +67,8 @@ namespace LocacaoBiblioteca.Controller
         {
             //aqui usamos o metodo FirstOrDefault para localizar nosso usuario dentro da lista com isso
             //conseguimos acessar as propriedades dele e desativar o registro.
-            UsuarioLista.FirstOrDefault(x => x.Id == identification).Ativo = false;
+            contexDB.ListaDeUsuarios.FirstOrDefault(x => x.Id == identification).Ativo = false;
             Console.WriteLine("Usuário Desativado com sucesso");
-
         }
     }
 }

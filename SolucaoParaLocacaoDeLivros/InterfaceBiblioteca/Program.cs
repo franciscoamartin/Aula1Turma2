@@ -10,6 +10,7 @@ namespace InterfaceBiblioteca
     {
         static LivrosController livrosController = new LivrosController();//instanciado
         static UsuarioController usuarios = new UsuarioController();
+        static LocacaoContext locacaoContext = new LocacaoContext();
 
         static void Main(string[] args)
         {
@@ -45,7 +46,6 @@ namespace InterfaceBiblioteca
                 Login = loginDoUsuario,       //sem construtor
                 Senha = senhaDoUsuario
             });
-
         }
         /// <summary>
         /// Mostrar no console o menu do sistema
@@ -65,6 +65,7 @@ namespace InterfaceBiblioteca
                 Console.WriteLine("4 - Cadastrar Usuário");
                 Console.WriteLine("5 - Trocar de Usuário");
                 Console.WriteLine("6 - Desativar Usuário");
+                Console.WriteLine("7 - Remover Livro");
                 Console.WriteLine("0 - Sair");
                 int numeroDigitado = int.Parse(Console.ReadKey().KeyChar.ToString());
 
@@ -88,6 +89,9 @@ namespace InterfaceBiblioteca
                         break;
                     case 6:
                         RemoverUsuarioId();
+                        break;
+                    case 7:
+                        RemoverLivroId();
                         break;
                     case 0:
                         Console.Clear();
@@ -132,6 +136,22 @@ namespace InterfaceBiblioteca
             Thread.Sleep(1000);
         }
 
+
+        /// <summary>
+        /// Metodo que remove o livro da lista
+        /// </summary>
+        private static void RemoverLivroId()
+        {
+            Console.WriteLine("Remover livro pelo id no sistema");
+            livrosController.RetornaListaDeLivros().ForEach(i => Console.WriteLine($"id: {i.Id} - Nome do Usuário: {i.Nome} e data criação: {i.DataCriacao}"));
+            Console.WriteLine();
+            Console.WriteLine("Informe o ID para remover o livro do sistema");
+            var livroID = int.Parse(Console.ReadLine());
+            livrosController.RemoverLivro(livroID);
+            Thread.Sleep(1000);
+            MostraMenuSistema();
+        }
+
         /// <summary>
         /// metodo que adiciona dentro da nossa lista um novo registro de livro.
         /// </summary>
@@ -146,7 +166,6 @@ namespace InterfaceBiblioteca
             //obtemos essa informação do usuário
             var nomeLivro = Console.ReadLine();
 
-
             //livroscontroller livros controle e nossa objeto em memoria com isso temos disponivel nele ferramentas que 
             //nos ajudam a realizar as tarefas
             //como adicionar um item a nossa lista de livros.
@@ -155,7 +174,6 @@ namespace InterfaceBiblioteca
                 //aqui atribuimos o nome que demos ao livro na propriedade nome de nossa livro com o sinal
                 //de apenas um = temos a atribuicao passagem de valor
                 Nome = nomeLivro
-
 
             });
             //indico que finalizamos o processo de cadastro de livro assim o usuario ja sabe que o mesmo foi realizado e sem erros
@@ -171,8 +189,8 @@ namespace InterfaceBiblioteca
             Console.WriteLine("Enter para voltar para o menu");
             Console.ReadKey();
             MostraMenuSistema();
-
         }
+
         /// <summary>
         /// metodo para mostrar a lista de usuarios ha cadastrados no sistema
         /// </summary>
@@ -185,7 +203,6 @@ namespace InterfaceBiblioteca
             Console.ReadKey();
             MostraMenuSistema();
         }
-
         //private static void TrocarUsuario()
         //{
         //    Console.Clear();
@@ -193,7 +210,5 @@ namespace InterfaceBiblioteca
 
         //    Console.ReadKey();
         //} 
-    
     }
-
 }
