@@ -32,6 +32,7 @@ namespace ExercicioOrdenacao
             listaPessoas.Add(new Pessoa(18, "Howe", DateTime.Parse("22/11/2001"), 146.96));
             listaPessoas.Add(new Pessoa(19, "Pratt", DateTime.Parse("17/11/2001"), 746.96));
             listaPessoas.Add(new Pessoa(20, "Sherman", DateTime.Parse("07/11/2001"), 946.96));
+            Console.WriteLine();
 
             Console.WriteLine("--------Exercicio Nome Crescente-------------");
 
@@ -39,6 +40,7 @@ namespace ExercicioOrdenacao
                             OrderBy(x => x.Nome).ToList<Pessoa>().
                             ForEach(i =>
                             Console.WriteLine($"Id: {i.Id} Nome: {i.Nome}"));
+            Console.WriteLine();
 
             Console.WriteLine("--------Exercicio Nascimento Descrecente-------------");
 
@@ -46,6 +48,7 @@ namespace ExercicioOrdenacao
               OrderByDescending(x => x.DataNascimento).ToList<Pessoa>().
               ForEach(i =>
               Console.WriteLine($"Id:{i.Id} Nome: {i.Nome} Nascimento: {i.DataNascimento}"));
+            Console.WriteLine();
 
             Console.WriteLine("--------Exercicio Pessoas com mais de 500 reais-------------");
 
@@ -54,6 +57,7 @@ namespace ExercicioOrdenacao
                 .OrderBy(x => x.Nome);
             listaSaldo.ToList<Pessoa>()
                            .ForEach(i => Console.WriteLine($"Id: {i.Id} Nome: {i.Nome} Saldo: {i.SaldoCarteira}"));
+            Console.WriteLine();
 
             Console.WriteLine("--------Exercicio Pessoas com mais de 18 anos-------------");
             // int idade = DateTime.Now.Year - dataNasc.Year;
@@ -73,7 +77,7 @@ namespace ExercicioOrdenacao
             //var mostrandoMaiores = listaPessoas.
             //    Find(x => idade > 18);
             //    Console.WriteLine($"Id {item.Id} Nome {item.Nome} Maiores de 18");
-
+            Console.WriteLine();
             Console.WriteLine("--------Exercicio Pessoas com menos de 16 anos-------------");
 
             foreach (var item in listaPessoas)
