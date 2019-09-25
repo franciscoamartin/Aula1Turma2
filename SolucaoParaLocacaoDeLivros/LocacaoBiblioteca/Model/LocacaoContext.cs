@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocacaoBiblioteca.Model
 {
     public class LocacaoContext
     {
+        //contador 
         public int IdContadorLivros { get; set; } = 1;
         public int IdContadorUsuarios { get; set; } = 1;
+
+        //instanciação
+        public List<Livros> ListaDeLivros { get; set; }
+        public List<Usuario> ListaDeUsuarios { get; set; }
 
         //metodo construtor que prepara nossa classe
         public LocacaoContext()
@@ -40,7 +42,5 @@ namespace LocacaoBiblioteca.Model
             });
         }
 
-        public List<Livros> ListaDeLivros { get; set; }
-        public List<Usuario> ListaDeUsuarios { get; set; }
     }
 }

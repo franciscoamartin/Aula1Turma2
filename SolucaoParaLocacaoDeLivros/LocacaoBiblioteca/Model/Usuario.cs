@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocacaoBiblioteca.Model
 {
@@ -25,10 +21,5 @@ namespace LocacaoBiblioteca.Model
 
         public DateTime DataAlteracao { get; set; }
 
-        //public Usuario(string login, string senha)
-        //{
-        //    Login = login;
-        //    Senha = senha;
-        //}
     }
 }
