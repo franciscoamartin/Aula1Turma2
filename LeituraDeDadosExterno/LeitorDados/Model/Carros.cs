@@ -16,14 +16,14 @@ namespace LeitorDados.Model
 
         public DateTime Data { get; set; }
 
-        public Carros(int id, string carro, double valor, int quantidade, DateTime data)
-        {
-            Id = id;
-            Carro = carro;
-            Valor = valor;
-            Quantidade = quantidade;
-            Data = data;
-        }
+        //public Carros(int id, string carro, double valor, int quantidade, DateTime data)
+        //{
+        //    Id = id;
+        //    Carro = carro;
+        //    Valor = valor;
+        //    Quantidade = quantidade;
+        //    Data = data;
+        //}
     }
 
 }

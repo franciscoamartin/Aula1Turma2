@@ -18,7 +18,7 @@ namespace LeitorDados.Controller
 
         public void AdicionandoCarros(Carros parametroLivro)
         {
-            //Adicionamos o livro em nossa lista.
+            //Adicionamos  em nossa lista.
             parametroLivro.Id = contexDB.IdContadorCarros++;
             contexDB.Carros.Add(parametroLivro);
         }
@@ -26,6 +26,13 @@ namespace LeitorDados.Controller
         public List<Carros> RetornaListaDeCarros()
         {
             return contexDB.Carros;
+        }
+
+        public List<Carros> FiltrarCarrosMes(int valor)
+        {
+
+            return contexDB.Carros
+                .Where(x => x.Data.Month == (valor)).ToList<Carros>();
         }
 
     }

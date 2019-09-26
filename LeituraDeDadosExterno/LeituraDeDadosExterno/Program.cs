@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LeitorDados.Model;
 using LeitorDados.Controller;
+using System.Globalization;
 
 namespace LeituraDeDadosExterno
 {
@@ -14,6 +15,7 @@ namespace LeituraDeDadosExterno
     {
 
         static CarrosController carrosController = new CarrosController();
+        static RelatorioContext relatorioContext = new RelatorioContext();
 
         static void Main(string[] args)
         {
@@ -47,24 +49,57 @@ namespace LeituraDeDadosExterno
                         break;
                     case 2:
                         //Realiza a chamada do menu de filtro por data
-                        FiltrarCarros();
+
+                        FiltrarCarrosData();
                         break;
                 }
             }
         }
 
-        private static void FiltrarCarros()
-        {
-            throw new NotImplementedException();
-        }
+
 
         private static void MostrarCarros()
         {
-            carrosController.RetornaListaDeCarros().ForEach(i =>
-                        //Para cada livro cadastrado temos a demostração no console por esta parte
-                        Console.WriteLine($"Id {i.Id} Nome do livro:{i.Carro}"));
 
+            Console.WriteLine();
+            carrosController.RetornaListaDeCarros().ForEach(i =>
+            //Para cada Carro da lista temos a demostração no console por esta parte
+            Console.WriteLine($"Id: {i.Id}|| Carro: {i.Carro}|| Valor: {i.Valor}|| Qtd: {i.Quantidade}|| Data: {i.Data.ToShortDateString()}"));
             Console.ReadKey();
         }
+
+        private static void FiltrarCarrosData()
+        {
+            Console.WriteLine("Filtrando a lista por mês");
+            Console.WriteLine();
+            Console.Write("Digite o mês: ");
+            int entradaFiltroData = int.Parse(Console.ReadLine());
+
+            carrosController.FiltrarCarrosMes(entradaFiltroData).ForEach(i => Console.WriteLine($"id Carro: {i.Id} - Nome do Carro: {i.Carro}- Valor: {i.Valor} Quantidade: {i.Quantidade}  - data: {i.Data.ToShortDateString()}"));
+
+            //var teste = carrosController.FiltrarCarrosMes(entradaFiltroData);
+            carrosController.FiltrarCarrosMes(entradaFiltroData).ForEach(i => Console.WriteLine($" Valor: {(i.Valor) * (i.Quantidade)}"));
+            carrosController.FiltrarCarrosMes(entradaFiltroData).ForEach(i => Console.WriteLine($" Média: {(i.Valor) / (i.Quantidade)}"));
+
+            //var media = valor / quantidade;
+            
+
+
+            Console.ReadKey();
+            
+
+        }
+
+      
+        //private static void VendasDoMes(int somaTotal)
+        //{
+
+        //    carrosController.FiltrarCarrosMes(somaTotal).ForEach(i => Console.WriteLine($" Valor: {(i.Valor) * (i.Quantidade)}"));
+
+        //    var soma = 0;
+        //    somaTotal
+
+
+        //}
     }
 }
