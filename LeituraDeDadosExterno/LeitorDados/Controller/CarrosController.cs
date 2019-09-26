@@ -16,12 +16,12 @@ namespace LeitorDados.Controller
         {
         }
 
-        public void AdicionandoCarros(Carros parametroLivro)
-        {
-            //Adicionamos  em nossa lista.
-            parametroLivro.Id = contexDB.IdContadorCarros++;
-            contexDB.Carros.Add(parametroLivro);
-        }
+        //public void AdicionandoCarros(Carros parametroLivro)
+        //{
+        //    //Adicionamos  em nossa lista.
+        //    parametroLivro.Id = contexDB.IdContadorCarros++;
+        //    contexDB.Carros.Add(parametroLivro);
+        //}
 
         public List<Carros> RetornaListaDeCarros()
         {
