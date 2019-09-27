@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ListagemDeCarros.Model;
 using ListagemDeCarros.Controller;
 
 namespace ListarCarrosDoAmigo
@@ -13,7 +8,7 @@ namespace ListarCarrosDoAmigo
         static CarroController controller = new CarroController();
         static void Main(string[] args)//7
         {
-            controller.Listar().ForEach(i => Console.WriteLine($"{i.Id} {i.Marca} {i.Modelo} {i.Portas}"));
+            controller.Listar().ForEach(i => Console.WriteLine($" Id: {i.Id} Marca: {i.Marca} Modelo: {i.Modelo} Porta: {i.Portas}"));
             Console.ReadLine();
         }
     }

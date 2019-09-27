@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListagemDeCervejas", "ListagemDeCervejas\ListagemDeCervejas.csproj", "{923FE997-78C3-4BC5-BA3D-6C1214FCA264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CervejaView", "CervejaView\CervejaView.csproj", "{944E1D48-0AC9-4F98-9F03-9FA881FAD6B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{923FE997-78C3-4BC5-BA3D-6C1214FCA264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{923FE997-78C3-4BC5-BA3D-6C1214FCA264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{923FE997-78C3-4BC5-BA3D-6C1214FCA264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{923FE997-78C3-4BC5-BA3D-6C1214FCA264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{944E1D48-0AC9-4F98-9F03-9FA881FAD6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{944E1D48-0AC9-4F98-9F03-9FA881FAD6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{944E1D48-0AC9-4F98-9F03-9FA881FAD6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{944E1D48-0AC9-4F98-9F03-9FA881FAD6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8D32B54-2C18-4FD3-B953-7BD63C2C7ED7}
+	EndGlobalSection
+EndGlobal
