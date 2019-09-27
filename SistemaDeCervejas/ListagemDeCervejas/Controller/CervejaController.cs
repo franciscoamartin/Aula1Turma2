@@ -12,7 +12,7 @@ namespace ListagemDeCervejas.Controller
         //metodo para listar a cerveja
         public List<Cerveja> GetCervejas()
         {
-            return SistemaCervejaContext.ListaVendas;
+            return SistemaCervejaContext.ListaCervejas;
         }
         //metodo cadastro de cerveja
         public void CadastrarCervejas(Cerveja cerveja)
@@ -51,7 +51,6 @@ namespace ListagemDeCervejas.Controller
         //    Console.WriteLine(CalcularPorcentagemSangue());
 
         //    }
-
 
         //    //return SistemaCervejaContext.ListaDeCervejas.Sum(x => x.Litros);
         //}

@@ -22,7 +22,7 @@ namespace ListagemDeCervejas.Model
             ListaDeCervejas.Add(new Cerveja { Id = IDParam++, Nome = "Budweiser", Litros = 0.355, Alcool = 5, Valor = 2.75 });
             ListaDeCervejas.Add(new Cerveja { Id = IDParam++, Nome = "Bohemia", Litros = 0.350, Alcool = 5, Valor = 4.5 });
         }
-        public List<Cerveja> ListaVendas { get { return ListaDeCervejas; } }
+        public List<Cerveja> ListaCervejas { get { return ListaDeCervejas; } }
 
     }
 }
