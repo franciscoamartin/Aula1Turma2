@@ -20,5 +20,9 @@ select SUM(ped.valor) from Pedidos ped inner join Clientes cli on ped.ClienteId 
 select IIF(SUM( ped.valor) > 2000, 'Brinde', 'Nao ganhou') from Pedidos ped inner join Clientes cli on ped.ClienteId = cli.Id where cli.Nome = 'Giomar' 
 -- filtrar por valor/ primeiro parametro de string é true e o segundo é false.
 
+select IIF(SUM( ped.valor) > 2000, 'Brinde', 'Nao ganhou') as 'Resultado', SUM(ped.Valor) as 'Total', cli.Nome from Pedidos ped 
+inner join Clientes cli on ped.ClienteId = cli.Id group by cli.Nome  -- soma de cada cliente e mostra o nome do cliente 
 
+select IIF(SUM( ped.valor) > 2000, 'Brinde', 'Nao ganhou') as 'Resultado', SUM(ped.Valor) as 'Total', cli.Nome from Clientes cli 
+inner join Pedidos ped  on cli.Id = ped.ClienteId group by cli.Nome -- forma invertida 
 
