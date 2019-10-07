@@ -18,4 +18,4 @@ INSERT INTO Flores (Nome, Quantidade) values ('Rosa', 4), ('Violeta', 3), ('Petu
 SELECT * FROM Flores order by Quantidade DESC
 
 --	1.3 - Devemos retornar uma seleção com a quantidade total de flores que temos em nossa tabela
-SELECT SUM(Quantidade) AS 'Total de Flores' FROM Flores 
+SELECT COUNT(Quantidade) AS 'Total de Flores' FROM Flores 
