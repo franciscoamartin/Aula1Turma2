@@ -104,10 +104,13 @@ select pro.Nome, ped.Quantidade from Pedidos ped inner join Produtos pro on ped.
 
 --	2.12 - Vamos retornar em uma seleção para o primeiro funcionario os produtos que ele não comprou de nosso mercado
 
-select fun.Nome as 'Funcionário' , pro.Nome as 'Marca', (pro.Valor * ped.Quantidade) as 'Valor Total', ped.Quantidade from Pedidos ped 
-inner join Funcionario fun on ped.FuncionarioId = fun.Id 
-inner join Produtos pro on ped.ProdutoId = pro.Id group by fun.Nome, pro.Nome, (pro.Valor * ped.Quantidade), ped.Quantidade
-order by pro.Nome ASC --fazer
+select * from Produtos where Nome NOT IN (
+select Produtos.Nome from Pedidos
+inner join Produtos  on Pedidos.ProdutoId = Produtos.Id  
+inner join Funcionario  on Pedidos.FuncionarioId = Funcionario.Id 
+where Funcionario.Nome = 'Joao'
+)
+
 
 
 --	2.13 - Vamos retornar em uma seleção os produtos ordenados pela ordem do mais comprado para o menos comprado

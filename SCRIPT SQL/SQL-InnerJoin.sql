@@ -107,13 +107,22 @@ order by SUM(Valor) DESC
 --exercicio 18
 
 --Trazer o mês de cada ano que retornou o maior valor de vendas
-select MONTH(DatInc) as 'Mês', sum(Valor) as 'Total'
-from Vendas group by MONTH (DatInc)
+select top 3 year(DatInc) as 'ano', MONTH(DatInc) as 'Mês', sum(Valor) as 'Total'
+from Vendas group by MONTH (DatInc), year(DatInc)
 order by SUM(Valor) DESC
 --exercicio 19 -v
 
---teste
---Trazer o mês de cada ano que retornou a maior quantidade de vendas
+--Trazer o mês de cada ano que retornou a maior quantidade de vendas - forma correta
+select YEAR(ven1.DatInc), 
+(select top 1 MONTH(ven.DatInc)
+From Vendas ven
+where YEAR(ven.DatInc) = YEAR(ven1.DatInc)
+group by MONTH(ven.DatInc)
+order by SUM(ven.Quantidade) DESC)
+from Vendas ven1
+group by YEAR (ven1.DatInc)
+
+--Trazer o mês de cada ano que retornou a maior quantidade de vendas - gambiarra
 select top 3 year(DatInc) as 'ano', sum(Quantidade) as 'total',  MONTH(DatInc) as 'mes'
 from Vendas group by YEAR (DatInc), MONTH(DatInc)
 order by SUM(Quantidade) DESC
@@ -141,37 +150,80 @@ select SUM(vend.Valor*Quantidade) as 'Valor Total' from Vendas vend  where UsuIn
 --exercicio 20
 
 --quantidade total felipe
-select SUM(vend.Quantidade) as 'Quantidade Total' from Vendas vend  where UsuInc = 1
+select COUNT(vend.Quantidade) as 'Quantidade Total' from Vendas vend  where UsuInc = 1
 --quantidade total giomar
-select SUM(vend.Quantidade) as 'Quantidade Total' from Vendas vend  where UsuInc = 2
+select COUNT(vend.Quantidade) as 'Quantidade Total' from Vendas vend  where UsuInc = 2
 
 
---valor total de giomar
-select SUM(vend.Valor*Quantidade) as 'Valor Total' from Vendas vend  inner join Usuarios usu on vend.UsuInc = usu.Id where Usuario like 'Giomar%'
+--valor total de giomar e Felipe
+select SUM(vend.Valor*vend.Quantidade) as 'Valor Total' from Vendas vend  inner join Usuarios usu on vend.UsuInc = usu.Id where Usuario like 'Giomar%'
+
+select SUM(vend.Valor* vend.Quantidade) as 'Valor Total' from Vendas vend  inner join Usuarios usu on vend.UsuInc = usu.Id where Usuario like 'Felipe%'
+
 
 
 --Trazer a quantidade total de vendas que Felipe e Giomar realizaram ordenando do maior para menor
-select SUM(vend.Quantidade) as 'Quantidade Total' from Vendas vend  
-inner join Usuarios usu on vend.UsuInc = usu.Id where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' order by vend.Quantidade DESC
+select COUNT(vend.UsuInc) as 'Quantidade Total', usu.Usuario from Vendas vend 
+inner join Usuarios usu on vend.UsuInc = usu.Id where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by vend.UsuInc, usu.Usuario order by COUNT(vend.UsuInc) ASC
+
+
 
 --Trazer o valor de vendas que Felipe e Giomar realizaram ordenando do maior para menor
-select SUM(vend.Quantidade * vend.Valor) as 'Valor Total' from Vendas vend  
-inner join Usuarios usu on vend.UsuInc = usu.Id where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' order by vend.Valor ASC
+select SUM(vend.Valor * vend.Quantidade) as 'Valor Total' , usu.Usuario as 'Usuario' from Vendas vend  
+inner join Usuarios usu on vend.UsuInc = usu.Id where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by usu.Usuario order by SUM(vend.Valor * vend.Quantidade) ASC
 
---Trazer  a marca mais vendida de todos os anos
-select car.Modelo, mar.Nome, usu.Usuario from Carros car 
+
+
+select COUNT(vend.Valor) as 'Valor Total' , usu.Usuario as 'Usuario' from Vendas vend  
+inner join Usuarios usu on vend.UsuInc = usu.Id where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by usu.Usuario order by SUM(vend.Valor * vend.Quantidade) ASC
+
+
+--Trazer  a marca mais vendida de todos os anos -v
+select COUNT(vend.Quant) from Carros car 
 inner join Usuarios usu on car.UsuInc = usu.Id 
 inner join Marcas mar on car.Marca = mar.Id 
-where Usuario like 'Felipe%' 
+group by mar.Nome order by Vendas.Quantidade ASC
 
 
-----Trazer  a marca mais vendida de todos os anos
 
-select SUM(vend.Quantidade) as 'Quantidade' , car.Modelo, mar.Nome as 'Marca', usu.Usuario from Carros car 
-inner join Usuarios usu on car.UsuInc = usu.Id 
-inner join Marcas mar on car.Marca = mar.Id 
-inner join Vendas vend on vend.Id = vend.Id
-where Usuario like 'Felipe%' group by vend.Quantidade, car.Modelo, mar.Nome, usu.Usuario order by vend.Quantidade DESC
+
+----Trazer  a marca mais vendida de todos os anos -correta
+
+select mar.Nome as 'Quantidade' from Marcas mar 
+inner join Carros car on car.Marca = mar.Id 
+inner join Vendas vend on vend.Carro = car.Id
+ group by  mar.Nome order by SUM(vend.Quantidade) DESC
+
+
+ -- Trazer o valor total da marca mais vendida de todos os anos	-- correta	
+
+select  SUM(vend.Quantidade * vend.Valor) as 'Total' from Marcas mar 
+inner join Carros car on car.Marca = mar.Id 
+inner join Vendas vend on vend.Carro = car.Id
+ group by  mar.Nome order by SUM(vend.Quantidade * vend.Valor) DESC
+
+
+ --Trazer a quantidade do carro mais vendido de todos os anos -- correta
+ select car.Modelo, SUM(vend.Quantidade) as 'Total' from Vendas vend
+inner join Carros car on vend.Carro = car.Id 
+ group by  car.Modelo order by SUM(vend.Quantidade ) DESC
+
+
+  --Trazer o valor do carro mais vendido de todos os anos -
+  select AVG( vend.Valor) as 'Total' from Carros car
+inner join Vendas vend on vend.Carro = car.Id 
+ group by  car.Modelo order by SUM(vend.Valor) DESC
+
+
+
+
+ --Trazer o valor do carro mais vendido de todos os anos -- ver
+ select  SUM(vend.Quantidade * vend.Valor) as 'Total', mar.Nome from Marcas mar 
+inner join Carros car on car.Marca = mar.Id 
+inner join Vendas vend on vend.Carro = car.Id
+ group by  mar.Nome order by SUM(vend.Quantidade * vend.Valor) DESC
+
+
 
 -- marca mais vendida de todos os anos
 select SUM(vend.Quantidade) as 'Quantidade' , mar.Nome as 'Marca', usu.Usuario from Carros car 
@@ -180,19 +232,33 @@ inner join Marcas mar on car.Id = mar.Id
 inner join Vendas vend on vend.Id = vend.Id
 where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by vend.Quantidade, mar.Nome, usu.Usuario order by Quantidade DESC
 
+
+
+
+
+
 -- valor total marca mais vendida de todos os anos
-select SUM(vend.Quantidade* vend.Valor) as 'Valor' , mar.Nome as 'Marca', usu.Usuario from Carros car 
-inner join Usuarios usu on car.UsuInc = usu.Id 
-inner join Marcas mar on car.Id = mar.Id 
+select SUM(vend.Quantidade * vend.Valor) as 'Valor' , mar.Nome as 'Marca', usu.Usuario from Carros car
+inner join Usuarios usu on car.UsuInc = usu.Id
+inner join Marcas mar on car.Id = mar.Id
 inner join Vendas vend on vend.Id = vend.Id
 where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by vend.Quantidade, mar.Nome, usu.Usuario order by Valor DESC
 
+select SUM(vend.Quantidade * vend.Valor) as 'Valor' from Vendas vend where UsuInc = 1
+
+
+
+
 --Trazer a quantidade do carro mais vendido de todos os anos
-select SUM(vend.Quantidade) as 'Quantidade' , mar.Nome as 'Marca', usu.Usuario from Carros car 
+select SUM(vend.Quantidade) as 'Quantidade' , mar.Nome as 'Marca' from Carros car
 inner join Usuarios usu on car.UsuInc = usu.Id 
 inner join Marcas mar on car.Id = mar.Id 
 inner join Vendas vend on vend.Id = vend.Id
-where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by vend.Quantidade, mar.Nome, usu.Usuario order by Quantidade DESC
+where usu.Usuario = 'Felipe' or usu.Usuario = 'Giomar' group by vend.Quantidade, mar.Nome order by Quantidade DESC
+
+
+
+
 
 --Trazer o valor do carro mais vendido de todos os anos
 select SUM(vend.Valor ) as 'Valor' , mar.Nome as 'Marca', usu.Usuario from Carros car 
@@ -207,16 +273,4 @@ inner join Usuarios usu on car.UsuInc = usu.Id
 inner join Marcas mar on car.Id = mar.Id 
 inner join Vendas vend on vend.Id = vend.Id
 where usu.Usuario = 'Felipe' group by vend.Quantidade, mar.Nome, usu.Usuario order by Quantidade DESC
-
-
-
-
-
-
-
-
-
-
-
-
 
