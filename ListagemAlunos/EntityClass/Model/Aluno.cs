@@ -11,6 +11,8 @@ namespace EntityClass.Model
     {
         [Key]
         public int id { get; set; }
+        //[Required] setar -- requere uma id
+        //[StringLength(30)] --setar tamanho da string
         public string Nome { get; set; }
 
         public int Idade { get; set; }

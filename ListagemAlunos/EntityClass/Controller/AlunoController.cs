@@ -10,12 +10,12 @@ namespace EntityClass.Controller
 {
     public class AlunoController
     {
-        EntityContexDB contexDB = new EntityContexDB();
+        EntityContexDB contexDB = new EntityContexDB(); // instanciamento da classe
         static AlunoController aluno = new AlunoController();
 
         public IQueryable<Aluno> GetAlunos()
         {
-            return contexDB.ListaDeAlunos;
+            return contexDB.ListaDeAlunos; // retorna os alunos 
         }
         public void AddAluno(Aluno aluno)
         {
