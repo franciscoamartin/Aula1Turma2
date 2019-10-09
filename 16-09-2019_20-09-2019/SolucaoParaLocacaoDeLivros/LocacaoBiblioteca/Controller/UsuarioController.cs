@@ -68,22 +68,40 @@ namespace LocacaoBiblioteca.Controller
             return true;
         }
 
-       //// metodo default para todos os usuários para ativo.
-       // public List<Usuario> RetornaListaDeUsuarios()
-       // {
-       //     return contextDB.ListaDeUsuarios.Where(x => x.Ativo).ToList<Usuario>();
-       // }
+        //// metodo default para todos os usuários para ativo.
+        // public List<Usuario> RetornaListaDeUsuarios()
+        // {
+        //     return contextDB.ListaDeUsuarios.Where(x => x.Ativo).ToList<Usuario>();
+        // }
 
-       // /// <summary>
-       // /// metodo que desativa um registro de usuario cadastrado em nossa lista
-       // /// </summary>
-       // /// <param name="identification">parametro que identifica o usuario que sera desativado</param>
-       // public void RemoverUsuario(int identification)
-       // {
-       //     //aqui usamos o metodo FirstOrDefault para localizar nosso usuario dentro da lista com isso
-       //     //conseguimos acessar as propriedades dele e desativar o registro.
-       //     contexDB.ListaDeUsuarios.FirstOrDefault(x => x.Id == identification).Ativo = false;
-       //     Console.WriteLine("Usuário Desativado com sucesso");
-       // }
+        // /// <summary>
+        // /// metodo que desativa um registro de usuario cadastrado em nossa lista
+        // /// </summary>
+        // /// <param name="identification">parametro que identifica o usuario que sera desativado</param>
+        // public void RemoverUsuario(int identification)
+        // {
+        //     //aqui usamos o metodo FirstOrDefault para localizar nosso usuario dentro da lista com isso
+        //     //conseguimos acessar as propriedades dele e desativar o registro.
+        //     contexDB.ListaDeUsuarios.FirstOrDefault(x => x.Id == identification).Ativo = false;
+        //     Console.WriteLine("Usuário Desativado com sucesso");
+        // }
+
+        public void RemoverUsuario(int identification)
+        {
+            var usuario = contextDB.Usuario.FirstOrDefault(x => x.Id == identification);
+            //tratamento de valores inválidos.
+            if (usuario != null)
+            {
+                usuario.Ativo = false;
+                contextDB.SaveChanges();//salva no BD
+
+                Console.WriteLine("Usuario removido com sucesso");
+            }
+            //Console.WriteLine("Digite um valor valido");
+        }
+
     }
+
+
+
 }
