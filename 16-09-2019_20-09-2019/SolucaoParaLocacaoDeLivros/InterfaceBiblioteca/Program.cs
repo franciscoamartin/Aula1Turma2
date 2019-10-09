@@ -3,6 +3,7 @@ using LocacaoBiblioteca.Controller;
 using LocacaoBiblioteca.Model;
 using System.Collections.Generic;
 using System.Threading;
+using System.Linq;
 
 namespace InterfaceBiblioteca
 {
@@ -66,6 +67,7 @@ namespace InterfaceBiblioteca
                 Console.WriteLine("5 - Trocar de Usuário");
                 Console.WriteLine("6 - Desativar Usuário");
                 Console.WriteLine("7 - Remover Livro");
+                Console.WriteLine("8 - Atualizar Livro");
                 Console.WriteLine("0 - Sair");
                 int numeroDigitado = int.Parse(Console.ReadKey().KeyChar.ToString());
 
@@ -93,6 +95,9 @@ namespace InterfaceBiblioteca
                     case 7:
                         RemoverLivroId();
                         break;
+                    case 8:
+                        AtualizarLivro();
+                        break;
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Saindo...");
@@ -108,7 +113,7 @@ namespace InterfaceBiblioteca
         private static void RemoverUsuarioId()
         {
             Console.WriteLine("Remover usuário pelo id no sistema");
-            usuarios.RetornaListaDeUsuarios().ForEach(i => Console.WriteLine($"id: {i.Id} - Nome do Usuário: {i.Login} e data criação: {i.DataCriacao}"));
+            usuarios.GetUsuario().ToList<Usuario>().ForEach(i => Console.WriteLine($"id: {i.Id} - Nome do Usuário: {i.Login} e data criação: {i.DataCriacao}"));
             Console.WriteLine();
             Console.WriteLine("Informe o ID para desativar do sistema");
             var usuarioID = int.Parse(Console.ReadLine());
@@ -169,7 +174,7 @@ namespace InterfaceBiblioteca
             //livroscontroller livros controle e nossa objeto em memoria com isso temos disponivel nele ferramentas que 
             //nos ajudam a realizar as tarefas
             //como adicionar um item a nossa lista de livros.
-            livrosController.AdicionarLivro(new Livros()
+            livrosController.AdicionarLivro(new Livro()
             {
                 //aqui atribuimos o nome que demos ao livro na propriedade nome de nossa livro com o sinal
                 //de apenas um = temos a atribuicao passagem de valor
@@ -197,7 +202,7 @@ namespace InterfaceBiblioteca
         private static void MostrarUsuarios()
         {
             Console.Clear();
-            usuarios.RetornaListaDeUsuarios().ForEach(i => Console.WriteLine($"id: {i.Id} - Nome do Usuário: {i.Login} e data criação: {i.DataCriacao}"));
+            usuarios.GetUsuario().ToList<Usuario>().ForEach(i => Console.WriteLine($"id: {i.Id} - Nome do Usuário: {i.Login} e data criação: {i.DataCriacao}"));
             Console.WriteLine();
             Console.WriteLine("Enter para voltar para o menu");
             Console.ReadKey();
@@ -210,5 +215,39 @@ namespace InterfaceBiblioteca
 
         //    Console.ReadKey();
         //} 
+
+
+        public static void AtualizarLivro()
+        {
+            Console.WriteLine("--- Atualizar Livro ---");
+
+            livrosController.RetornaListaDeLivros().ForEach(i => Console.WriteLine($"id do livro: {i.Id} - Nome do Livro: {i.Nome} e data de criação: {i.DataCriacao}"));
+
+            Console.WriteLine("Informe o Id para alterar registro");
+
+            var livroId = int.Parse(Console.ReadLine());
+
+            //obtemos no BD o item completo que vamos atualizar
+            var livro = livrosController.GetLivro().FirstOrDefault(x => x.Id == livroId); //obtemos os celulares e a regra via Id
+
+            if (livro == null)
+            {
+                Console.WriteLine("Id informado inválido");
+                return;
+            }
+            Console.WriteLine("Informe o nome do livro");
+            livro.Nome = Console.ReadLine();
+            
+            var resultado = livrosController.AtualizarLivro(livro);
+            if (resultado)
+            {
+                Console.WriteLine("Livro atualizado com sucesso");
+            }
+            else
+            {
+                Console.WriteLine("Erro ao atualizar livro");
+            }
+
+        }
     }
 }

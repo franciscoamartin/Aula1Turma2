@@ -10,13 +10,13 @@ namespace LocacaoBiblioteca.Model
         public int IdContadorUsuarios { get; set; } = 1;
 
         //instanciação
-        public List<Livros> ListaDeLivros { get; set; }
+        public List<Livro> ListaDeLivros { get; set; }
         public List<Usuario> ListaDeUsuarios { get; set; }
 
         //metodo construtor que prepara nossa classe
         public LocacaoContext()
         {
-            ListaDeLivros = new List<Livros>();
+            ListaDeLivros = new List<Livro>();
             ListaDeUsuarios = new List<Usuario>();
 
             //adiciona o usuario
@@ -33,7 +33,7 @@ namespace LocacaoBiblioteca.Model
                 Login = "admin",
                 Senha = "123"
             });
-            ListaDeLivros.Add(new Livros
+            ListaDeLivros.Add(new Livro
             {
                 Id = IdContadorLivros++,
                 Nome = "Meu Novo livro",
