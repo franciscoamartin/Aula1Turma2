@@ -282,10 +282,14 @@ namespace InterfaceBiblioteca
             if (resultado)
             {
                 Console.WriteLine("Livro atualizado com sucesso");
+                Thread.Sleep(1000);
+
             }
             else
             {
                 Console.WriteLine("Erro ao atualizar livro");
+                Thread.Sleep(1000);
+                Console.ReadKey();
             }
 
         }
