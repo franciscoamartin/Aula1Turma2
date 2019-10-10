@@ -11,7 +11,7 @@ namespace LocacaoBiblioteca.Model
 
         [Required]
         [MaxLength(30)]
-        public string Login { get; set; }
+        public string Login { get; set; } 
 
         [Required]
         [MaxLength(30)]

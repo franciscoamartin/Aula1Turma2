@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace LocacaoBiblioteca.Model
 {
-    public class LivrosContextDB : DbContext
+    public class BibliotecaContextDB : DbContext
     {
+
         public DbSet<Livro> Livro { get; set; }
-    
+
+        public DbSet<Usuario> Usuario { get; set; }
+
     }
 }

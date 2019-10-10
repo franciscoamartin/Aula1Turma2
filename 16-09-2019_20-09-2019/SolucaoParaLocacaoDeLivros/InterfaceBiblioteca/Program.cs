@@ -11,7 +11,8 @@ namespace InterfaceBiblioteca
     {
         static LivrosController livrosController = new LivrosController();//instanciado
         static UsuarioController usuarios = new UsuarioController();
-        static LocacaoContext locacaoContext = new LocacaoContext();
+        //static LocacaoContext locacaoContext = new LocacaoContext();
+        //static BibliotecaContextDB contextDB = new BibliotecaContextDB();
 
         static void Main(string[] args)
         {
@@ -30,23 +31,20 @@ namespace InterfaceBiblioteca
         /// <returns>retorna verdadeiro quando o login e senha informados estiverem corretos</returns>
         private static bool RealizaLoginSistema()
         {
-            Console.Clear();
-            Console.WriteLine("Informe seu login e senha para acessar o sistema: ");
+            
+        Console.WriteLine("Informe seu login e senha para acessar o sistema: ");
 
             Console.Write("Login: ");
             var loginDoUsuario = Console.ReadLine();
 
             Console.Write("Senha: ");
             var senhaDoUsuario = Console.ReadLine();
-
-            //UsuarioController controller = new UsuarioController();
-
-            return usuarios.LoginSistema(new Usuario() //com construtor
-
-            {
-                Login = loginDoUsuario,       //sem construtor
-                Senha = senhaDoUsuario
-            });
+            
+            Usuario usuario = new Usuario();
+            usuario.Login = loginDoUsuario;
+            usuario.Senha = senhaDoUsuario;
+            return usuarios.LoginSistema(usuario); 
+            
         }
         /// <summary>
         /// Mostrar no console o menu do sistema

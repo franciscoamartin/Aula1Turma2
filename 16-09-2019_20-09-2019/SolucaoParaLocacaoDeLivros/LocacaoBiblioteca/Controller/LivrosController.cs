@@ -11,7 +11,7 @@ namespace LocacaoBiblioteca.Controller
     {
 
         //private LocacaoContext contexDB = new LocacaoContext();
-        LivrosContextDB contextDB = new LivrosContextDB();
+        BibliotecaContextDB contextDB = new BibliotecaContextDB();
         public LivrosController()
         {
 

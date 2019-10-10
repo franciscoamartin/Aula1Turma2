@@ -55,7 +55,7 @@
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Model\Livro.cs" />
     <Compile Include="Model\LocacaoContext.cs" />
-    <Compile Include="Model\LivrosContextDB.cs" />
+    <Compile Include="Model\BibliotecaContextDB.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\UsuarioContextDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

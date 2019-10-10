@@ -14,9 +14,24 @@ namespace LocacaoBiblioteca.Controller
 
     {
         //private LocacaoContext contexDB = new LocacaoContext();
-        UsuarioContextDB contextDB = new UsuarioContextDB();
+        BibliotecaContextDB contextDB = new BibliotecaContextDB();
 
         //criando privado para impedir o programador de adicionar um ID ou alterar fora da classe.
+
+
+        public UsuarioController()
+        {
+            var defaultUser = contextDB.Usuario.FirstOrDefault(x =>
+            x.Login == "admin" && x.Senha == "admin" && x.Ativo ==  true);
+
+            if (defaultUser == null)
+                contextDB.Usuario.Add(new Usuario()
+                {
+                    Login = "admin",
+                    Senha = "admin"
+                });
+            contextDB.SaveChanges();
+        }
 
         /// <summary>
         /// Metodo que realiza o login dentro do nosso sistema
@@ -28,18 +43,9 @@ namespace LocacaoBiblioteca.Controller
         /// <returns>Retorna verdadeiro quando existir o usuário com este login e senha</returns>
         public bool LoginSistema(Usuario usuarios)
         {
-
-            return GetUsuario().ToList<Usuario>().Exists(x => x.Login == usuarios.Login && x.Senha == usuarios.Senha);
+            bool login = GetUsuario().ToList().Exists(x => x.Login == usuarios.Login && x.Senha == usuarios.Senha);
+            return login;
         }
-
-        //private bool Validacao()
-        //{
-        //    foreach (var item in Usuario)
-        //    {
-        //        if (item.Contains("aa") == true) { }
-        //    }
-        //    return true;
-        //}
 
 
         public IQueryable<Usuario> GetUsuario()
