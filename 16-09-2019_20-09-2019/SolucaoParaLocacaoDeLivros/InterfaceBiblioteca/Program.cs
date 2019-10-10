@@ -66,6 +66,7 @@ namespace InterfaceBiblioteca
                 Console.WriteLine("6 - Desativar Usuário");
                 Console.WriteLine("7 - Remover Livro");
                 Console.WriteLine("8 - Atualizar Livro");
+                Console.WriteLine("9 - Atualizar Usuário");
                 Console.WriteLine("0 - Sair");
                 int numeroDigitado = int.Parse(Console.ReadKey().KeyChar.ToString());
 
@@ -96,6 +97,9 @@ namespace InterfaceBiblioteca
                     case 8:
                         AtualizarLivro();
                         break;
+                    case 9:
+                        AtualizarUsuario();
+                        break;
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Saindo...");
@@ -105,6 +109,44 @@ namespace InterfaceBiblioteca
                 }
                 //aqui vamos pegar numero digitado
                 //executar proxima funcao
+            }
+        }
+
+        private static void AtualizarUsuario()
+        {
+            Console.WriteLine("--- Atualizar Usuario ---");
+
+            usuarios.GetUsuario().ToList<Usuario>().ForEach(i => Console.WriteLine($"id: {i.Id} - Nome do Usuário: {i.Login} e data criação: {i.DataCriacao}"));
+
+            Console.WriteLine("Informe o Id para alterar registro");
+
+            var usuarioId = int.Parse(Console.ReadLine());
+
+            //obtemos no BD o item completo que vamos atualizar
+            var usuario = usuarios.GetUsuario().FirstOrDefault(x => x.Id == usuarioId); //obtemos os celulares e a regra via Id
+
+            if (usuario == null)
+            {
+                Console.WriteLine("Id informado inválido");
+                return;
+            }
+
+
+            Console.WriteLine("Informe o nome do usuário para atualizar");
+            usuario.Login = Console.ReadLine();
+
+            Console.WriteLine("Informe a nova senha do usuário para atualizar");
+            usuario.Senha = Console.ReadLine();
+
+
+            var resultado = usuarios.AtualizarUsuario(usuario);
+            if (resultado)
+            {
+                Console.WriteLine("Usuário atualizado com sucesso");
+            }
+            else
+            {
+                Console.WriteLine("Erro ao atualizar usuário");
             }
         }
 

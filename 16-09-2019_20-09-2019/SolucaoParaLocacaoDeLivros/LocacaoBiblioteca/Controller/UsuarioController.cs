@@ -33,6 +33,22 @@ namespace LocacaoBiblioteca.Controller
             contextDB.SaveChanges();
         }
 
+        public bool AtualizarUsuario(Usuario item)
+        {
+            var usuario = contextDB.Usuario.FirstOrDefault(x => x.Id == item.Id); //buscando na tabela o celular e regra para realizar a busca
+            if (usuario == null)//falamos que nosso celular da tabela vai ser igual nosso celular que estamos passando, e verificamos se ele realmente encontrou um celular
+            {
+                return false; //caso nao encontramos retornando false
+            }
+            else
+            {
+                // nosso celular da tabela vai ser igual nosso celular que estamos passando
+                usuario.DataAlteracao = DateTime.Now;
+                contextDB.SaveChanges();
+            }
+            return true; //retornando a atualizacao
+        }
+
         /// <summary>
         /// Metodo que realiza o login dentro do nosso sistema
         /// para realizar o login padrão use:
