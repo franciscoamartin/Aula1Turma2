@@ -56,8 +56,8 @@ namespace InterfaceBiblioteca
             {
                 Console.Clear();
                 Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVRO 1.0");
-
-                Console.WriteLine("Menu Sistema");
+                Console.WriteLine();
+                Console.WriteLine("Escolha uma das opções abaixo: ");
                 Console.WriteLine("1 - Listar de usuários");
                 Console.WriteLine("2 - Lista de Livros");
                 Console.WriteLine("3 - Cadastrar Livros");
@@ -268,7 +268,7 @@ namespace InterfaceBiblioteca
             var livroId = int.Parse(Console.ReadLine());
 
             //obtemos no BD o item completo que vamos atualizar
-            var livro = livrosController.GetLivro().FirstOrDefault(x => x.Id == livroId); //obtemos os celulares e a regra via Id
+            var livro = livrosController.GetLivro().FirstOrDefault(x => x.Id == livroId); //obtemos os livros e a regra via Id
 
             if (livro == null)
             {

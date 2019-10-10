@@ -1,0 +1,83 @@
+REFATORAR PARA BD
+
+1 - Entender o fluxo do sistema antigo
+2 - refatorar codigos
+3 - dentro da classe livro.cs - tornar id com [key] - importar data.annotations - anotacoes superiores em cada propriedade como maxLength ou required
+4 - default nas propriedades de controle de usuario como - datatime - true - 0
+5- deixar classes publicas
+6 - criar classe ControleUsuario e separar as propriedades nessa classe.
+7 - herdar classe controleUsuario na classe Usuario
+8 - desativar classe locacaoContext ou manter para não ter mais erros, porém precisa rever código
+9 - criar classe ContextDB onde vai conter a herança : DbContext 
+Exemplo:
+
+          public class BibliotecaContextDB : DbContext
+    {
+
+        public DbSet<Livro> Livro { get; set; }
+
+        public DbSet<Usuario> Usuario { get; set; }
+}
+
+10 - Editar a LivrosController no metodo addLivro - acrescentar o contexDB.SaveChanges() para salvar no BD
+11 - Adicionar savechanges no metodo removerLivro tambem
+12 - testar aplicacao - falta do entity
+13 - instalar EntityFramework -nugetManager
+14-  criar metodos de atualizar livro exemplo
+
+ public bool AtualizarLivro(Livro item)
+        {
+            var livro = contextDB.Livro.FirstOrDefault(x => x.Id == item.Id); //buscando na tabela o celular e regra para realizar a busca
+            if (livro == null)//falamos que nosso celular da tabela vai ser igual nosso celular que estamos passando, e verificamos se ele realmente encontrou um celular
+            {
+                return false; //caso nao encontramos retornando false
+            }
+            else
+            {
+                // nosso celular da tabela vai ser igual nosso celular que estamos passando
+                livro.DataAlteracao = DateTime.Now;
+                contextDB.SaveChanges();
+            }
+            return true; //retornando a atualizacao
+        }
+15 - finalizamos a parte da livrosController
+16 - agora na program
+17 - instanciamos a nova classe ContextDB 
+18 - Adicionar o metodo atualizaLivros exemplo:
+
+  public static void AtualizarLivro()
+        {
+            Console.WriteLine("--- Atualizar Livro ---");
+
+            livrosController.RetornaListaDeLivros().ForEach(i => Console.WriteLine($"id do livro: {i.Id} - Nome do Livro: {i.Nome} e data de criação: {i.DataCriacao}"));
+
+            Console.WriteLine("Informe o Id para alterar registro");
+
+            var livroId = int.Parse(Console.ReadLine());
+
+            //obtemos no BD o item completo que vamos atualizar
+            var livro = livrosController.GetLivro().FirstOrDefault(x => x.Id == livroId); //obtemos os livros e a regra via Id
+
+            if (livro == null)
+            {
+                Console.WriteLine("Id informado inválido");
+                return;
+            }
+            Console.WriteLine("Informe o nome do livro");
+            livro.Nome = Console.ReadLine();
+            
+            var resultado = livrosController.AtualizarLivro(livro);
+            if (resultado)
+            {
+                Console.WriteLine("Livro atualizado com sucesso");
+            }
+            else
+            {
+                Console.WriteLine("Erro ao atualizar livro");
+            }
+
+        }
+
+
+19 - finalizamos a interface biblioteca
+
