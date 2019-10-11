@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoBicicleta.Model
 {
-    public class Bicicleta
+    public class Bicicleta : ControleUsuario
     {
 
         [Key]
