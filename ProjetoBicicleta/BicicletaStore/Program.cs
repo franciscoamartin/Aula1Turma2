@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ProjetoBicicleta.Controller;
 using ProjetoBicicleta.Model;
 
@@ -51,6 +52,12 @@ namespace BicicletaStore
             }
         }
 
+        //public static void BicicletaJSON()
+        //{
+        //    string strResultJson = JsonConvert.SerializeObject(Bicicleta);
+        //    Console.WriteLine(strResultJson);
+        //}
+
         /// <summary>
         /// metodo ordenar lista e exportar para arquivo txt via Stream IO
         /// </summary>
@@ -84,10 +91,7 @@ namespace BicicletaStore
                 Console.ReadKey();
                 Menu();
             }
-
         }
-
-
 
         private static void RemoverBicicleta()
         {
@@ -105,7 +109,6 @@ namespace BicicletaStore
             Console.WriteLine("Dê enter para voltar ao menu");
             Console.ReadKey();
             Menu();
-
 
         }
 
@@ -145,7 +148,6 @@ namespace BicicletaStore
 
         }
 
-
         public static void CadastrarBicicleta()
         {
             Console.WriteLine("Digite a marca da bicicleta");
@@ -181,7 +183,6 @@ namespace BicicletaStore
                 Menu();
             }
         }
-
 
         public static void ListarBicicletas()
         {
