@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjetoBicicleta.Model;
+using Newtonsoft.Json;
 using ProjetoBicicleta.Controller;
+using ProjetoBicicleta.Model;
 
 namespace BicicletaStore
 {
@@ -16,140 +18,181 @@ namespace BicicletaStore
             Menu();
         }
 
-        public static void Menu()
+        private static void Menu()
         {
+            Console.Clear();
+            Console.WriteLine("Menu de Bicicleta");
+            Console.WriteLine();
+            Console.WriteLine("Escolha uma opção");
+            Console.WriteLine("1 - Listar Bicicletas");
+            Console.WriteLine("2 - Cadastrar Bicicletas");
+            Console.WriteLine("3 - Atualizar Bicicleta");
+            Console.WriteLine("4 - Deletar Bicicleta");
+            Console.WriteLine("5 - Ordenar por valor Maior para Menor");
+            var menuEscolhido = int.Parse(Console.ReadLine());
 
-            var opcao = int.MinValue;
-            while (opcao != 0)
+            switch (menuEscolhido)
             {
-                Console.WriteLine("Escolha um menu");
-                Console.WriteLine("1 - Inserir Bicicleta");
-                Console.WriteLine("2 - Listar Bicicletas");
-                Console.WriteLine("3 - Atualizar Bicicleta");
-                Console.WriteLine("4 - Remover Bicicleta");
-                Console.WriteLine("0 - Sair");
-                opcao = int.Parse(Console.ReadLine());
-                switch (opcao)
-                {
-                    case 1:
-                        InserirBicicleta();
-                        break;
-                    case 2:
-                        ListarBicicleta();
-                        break;
-                    case 3:
-                        AtualizarBicicleta();
-                        break;
-                    case 4:
-                        DesativarBicicleta();
-                        break;
-                    case 0:
-                        Console.WriteLine("Saindo do sistema...");
-                        break;
-                    default:
-                        Console.WriteLine("Opção inválida");
-                        break;
-                }
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu inicial");
-                Console.ReadKey(true);
+                case 1:
+                    ListarBicicletas();
+                    break;
+                case 2:
+                    CadastrarBicicleta();
+                    break;
+                case 3:
+                    AtualizarBicicleta();
+                    break;
+                case 4:
+                    RemoverBicicleta();
+                    break;
+                case 5:
+                    OrdenarBicicletaMaiorParaMenor();
+                    break;
+
             }
         }
 
-        private static void DesativarBicicleta()
+        //public static void BicicletaJSON()
+        //{
+        //    string strResultJson = JsonConvert.SerializeObject(Bicicleta);
+        //    Console.WriteLine(strResultJson);
+        //}
+
+        /// <summary>
+        /// metodo ordenar lista e exportar para arquivo txt via Stream IO
+        /// </summary>
+        private static void OrdenarBicicletaMaiorParaMenor()
         {
-            Console.WriteLine("--- Desativar Bicicleta ---");
+            StringBuilder sb = new StringBuilder();
 
-            bicicletaController.ListarBicicletas().ToList<Bicicleta>().ForEach(x => Console.WriteLine($"Id: {x.Id} Marca: {x.Marca} Modelo: {x.Modelo} Preço: {x.Valor}"));
+            bicicletaController.ListarBicicletas().OrderByDescending(x => x.Valor).ToList().ForEach(x => Console.WriteLine(($"ID: {x.Id} MARCA: {x.Marca} MODELO: {x.Modelo} VALOR: {x.Valor.ToString("C")} ")));
+            Console.WriteLine("Valor total: ");
+            Console.WriteLine(bicicletaController.ListarBicicletas().Sum(x => x.Valor));
 
-            Console.WriteLine("Informe o Id para desativar registro");
+            Console.WriteLine("Você quer exportar os dados S/N");
+            char respostaExportacao = char.Parse(Console.ReadLine());
 
-            var bicicletaId = int.Parse(Console.ReadLine());
-
-            var resultado = bicicletaController.RemoverBicicleta(bicicletaId);
-
-            if (resultado)
+            if (respostaExportacao == 'S' || respostaExportacao == 's')
             {
-                Console.WriteLine("Bicicleta removida com sucesso");
+                bicicletaController.ListarBicicletas().OrderByDescending(x => x.Valor).ToList().ForEach(x => sb.AppendLine($"ID: {x.Id} MARCA: {x.Marca} MODELO: {x.Modelo} VALOR: {x.Valor.ToString("C")} "));
+                sb.AppendLine("Valor total: ");
+                sb.AppendLine(bicicletaController.ListarBicicletas().Sum(x => x.Valor).ToString());
+
+                File.WriteAllText(@"C:\Users\900103\Desktop\ARQUIVO_EXPORTAR\dados.txt", sb.ToString());
+                Console.WriteLine("Exportado com sucesso");
+                Console.WriteLine();
+                Console.WriteLine("Dê enter para voltar para menu");
+                Console.ReadKey();
+                Menu();
             }
             else
             {
-                Console.WriteLine("Erro ao remover bicicleta");
+                Console.WriteLine("Dê enter para voltar ao menu");
+                Console.ReadKey();
+                Menu();
             }
+        }
+
+        private static void RemoverBicicleta()
+        {
+            Console.WriteLine("Remover Bicicleta");
+            Console.WriteLine();
+
+            bicicletaController.ListarBicicletas().ToList<Bicicleta>().ForEach(x => Console.WriteLine($"ID: {x.Id} MARCA: {x.Marca} MODELO: {x.Modelo} VALOR: {x.Valor.ToString("C")} "));
+            Console.WriteLine("Digite o id para remover a bicicleta");
+
+            var idEscolhido = int.Parse(Console.ReadLine());
+
+            bicicletaController.RemoverBicicleta(idEscolhido);
+            Console.WriteLine("Bicicleta Removida com sucesso.");
+            Console.WriteLine();
+            Console.WriteLine("Dê enter para voltar ao menu");
+            Console.ReadKey();
+            Menu();
+
         }
 
         private static void AtualizarBicicleta()
         {
-            Console.WriteLine("--- Atualizar Bicicleta ---");
+            Console.WriteLine("Atualizar Bicicleta");
+            Console.WriteLine();
 
-            bicicletaController.ListarBicicletas().ToList<Bicicleta>().ForEach(x => Console.WriteLine($"Id: {x.Id} Marca: {x.Marca} Modelo: {x.Modelo} Preço: {x.Valor}"));
+            bicicletaController.ListarBicicletas().ToList<Bicicleta>().ForEach(x => Console.WriteLine($"ID: {x.Id} MARCA: {x.Marca} MODELO: {x.Modelo} VALOR: {x.Valor.ToString("C")} "));
+            Console.WriteLine("Digite o id para atualizar a bicicleta");
 
-            Console.WriteLine("Informe o Id para alterar registro");
+            var idEscolhido = int.Parse(Console.ReadLine());
 
-            var bicicletaId = int.Parse(Console.ReadLine());
-
-            //obtemos no BD o item completo que vamos atualizar
-            var bicicleta = bicicletaController.ListarBicicletas().FirstOrDefault(x => x.Id == bicicletaId); //obtemos os celulares e a regra via Id
-
-            if (bicicleta == null)
+            var atualizar = bicicletaController.ListarBicicletas().FirstOrDefault(x => x.Id == idEscolhido);
+            if (atualizar == null)
             {
-                Console.WriteLine("Id informado inválido");
+                Console.WriteLine("Id inválido");
                 return;
             }
+            Console.WriteLine("Informe a marca para atualizar");
+            atualizar.Marca = Console.ReadLine();
 
-            Console.WriteLine("Informe o Marca da Bicicleta");
-            bicicleta.Marca = Console.ReadLine();
+            Console.WriteLine("Informe o modelo para atualizar");
+            atualizar.Modelo = Console.ReadLine();
 
-            Console.WriteLine("Informe o Modelo da Bicicleta");
-            bicicleta.Modelo = Console.ReadLine();
+            Console.WriteLine("Informe o valor para atualizar");
+            atualizar.Valor = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Informe o Valor da Bicicleta");
-            bicicleta.Valor = double.Parse(Console.ReadLine());
+            var resultado = bicicletaController.AtualizarBicicleta(atualizar);
 
-            var resultado = bicicletaController.AtualizarBicicleta(bicicleta);
-            if (resultado)
-            {
-                Console.WriteLine("Bicicleta atualizada com sucesso");
-            }
-            else
-            {
-                Console.WriteLine("Erro ao atualizar bicicleta");
-            }
+            atualizar.Ativo = false;
+
+            Console.WriteLine("Atualizado com sucesso");
+            Console.WriteLine("Dê enter para voltar ao menu");
+            Console.ReadKey();
+            Menu();
+
         }
 
-        private static void ListarBicicleta()
+        public static void CadastrarBicicleta()
         {
-            Console.WriteLine("Lista de Bicicletas: ");
-            bicicletaController.ListarBicicletas().ToList<Bicicleta>().ForEach(x => Console.WriteLine($"Id: {x.Id} Marca: {x.Marca} Modelo: {x.Modelo} Preço: {x.Valor}"));
-        }
+            Console.WriteLine("Digite a marca da bicicleta");
+            var marcaCadastro = Console.ReadLine();
 
-        private static void InserirBicicleta()
-        {
-            Console.WriteLine("--- Inserir Bicicleta ---");
-            Console.WriteLine("Informe o modelo da bicicleta");
-            var modeloBicicleta = Console.ReadLine();
+            Console.WriteLine("Digite a modelo da bicicleta");
+            var modeloCadastro = Console.ReadLine();
 
-            Console.WriteLine("Informe a marca da bicicleta");
-            var marcaBicicleta = Console.ReadLine();
-
-            Console.WriteLine("Informe o Valor da bicicleta");
-            var precoBicicleta = double.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o valor da bicicleta");
+            var valorCadastro = double.Parse(Console.ReadLine());
 
             var resultado = bicicletaController.AddBicicleta(new Bicicleta()
             {
-                Modelo = modeloBicicleta,
-                Marca = marcaBicicleta,
-                Valor = precoBicicleta
+                Marca = marcaCadastro,
+                Modelo = modeloCadastro,
+                Valor = valorCadastro
             });
+
             if (resultado)
             {
-                Console.WriteLine("Cadastrado com sucesso!");
+                Console.WriteLine("Cadastrado com sucesso");
+                Console.WriteLine();
+                Console.WriteLine("Digite enter para voltar ao menu");
+                Console.ReadKey();
+                Menu();
             }
             else
             {
-                Console.WriteLine("Erro ao cadastrar aparelho!");
+                Console.WriteLine("Erro ao cadastrar produto.");
+                Console.WriteLine();
+                Console.WriteLine("Digite enter para voltar ao menu");
+                Console.ReadKey();
+                Menu();
             }
         }
 
-
+        public static void ListarBicicletas()
+        {
+            Console.WriteLine("Lista de Bicicletas");
+            Console.WriteLine();
+            bicicletaController.ListarBicicletas().ToList<Bicicleta>().ForEach(x => Console.WriteLine($"ID: {x.Id} MARCA: {x.Marca} MODELO: {x.Modelo} VALOR: {x.Valor.ToString("C")} "));
+            Console.WriteLine();
+            Console.WriteLine("Dê enter para voltar ao menu");
+            Console.ReadKey();
+            Menu();
+        }
     }
 }

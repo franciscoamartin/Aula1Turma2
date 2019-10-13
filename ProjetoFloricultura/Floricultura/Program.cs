@@ -75,12 +75,13 @@ namespace Floricultura
         private static void OrdenarFlores()
         {
             Console.WriteLine("Ordenado por maior a menor quantidade");
+             floresController.GetFlores().OrderByDescending(x => x.Quantidade).ToList().ForEach(x => Console.WriteLine($"ID: {x.Id} NOME: {x.Nome} QUANTIDADE: {x.Quantidade}"));
+            Console.WriteLine("Quantidade total: ");
+            Console.WriteLine(floresController.GetFlores().Sum(x => x.Quantidade));
 
-            //List<Flores> floresOrdenadasMaior = floresController.OrderByDescending(p => p.Altura).ThenBy(c => c.Idade).ToList();
-
-
-            floresController.GetFlores().ToList<Flores>().ForEach(x => Console.WriteLine($"{x.Id} - {x.Nome} - {x.Quantidade}"));
-
+            Console.WriteLine("Dê enter para voltar ao menu");
+            Console.ReadKey();
+            Menu();
         }
     }
 }
