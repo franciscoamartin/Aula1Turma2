@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 namespace ProjetoBicicleta.Model
 {
-    public class Bicicleta : ControleUsuario
+    public class Usuario : ControleUsuario
     {
-
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(20)]
-        [Required]
-        public string Modelo { get; set; }
-        [Required]
-        [MaxLength(20)]
-        public string Marca { get; set; }
+        [MaxLength(50)]
+        public string Nome { get; set; }
 
-        public double Valor { get; set; }
+        [MaxLength(30)]
+        [Required]
+        public string Login { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        public string Senha { get; set; }
     }
 }

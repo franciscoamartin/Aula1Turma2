@@ -17,7 +17,6 @@ namespace AcessandoEntity
             pessoa.AddPessoa(new Pessoa() { Nome = "Felipe" }); // adicionamos na nossa lista
             pessoa.GetPessoas().ToList<Pessoa>().ForEach(x => Console.WriteLine(x.Nome)); //obtemos a lista de pessoas.
 
-
             Console.ReadKey();
             
         }

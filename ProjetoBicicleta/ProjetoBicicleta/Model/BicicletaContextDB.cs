@@ -10,5 +10,8 @@ namespace ProjetoBicicleta.Model
     class BicicletaContextDB : DbContext
     {
         public DbSet<Bicicleta> GetBicicleta { get; set; }
+
+        public DbSet<Usuario> Usuarios { get; set; }
+
     }
 }
