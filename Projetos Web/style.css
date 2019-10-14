@@ -1,0 +1,42 @@
+body{
+margin: 0;
+padding:0;
+ align-items: center;
+  justify-content: center;
+background: #000;
+  height: 100vh;
+  display: flex;
+}
+
+.texto{
+  width: 300px;
+  height: 200px;
+font-size: 20px;
+color: red;
+align-items: center;
+  position: relative;
+font-family: "montserrat",sans-serif;
+}
+
+
+.texto span{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 10px;
+  animation: a2 4s linear infinite;
+}
+
+@keyframes a1 {
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes a2 {
+  to{
+    transform: rotate(-360deg);
+  }
+}
