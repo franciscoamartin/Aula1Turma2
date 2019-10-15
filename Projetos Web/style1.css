@@ -1,0 +1,35 @@
+body{
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #b3b3b3;
+
+}
+.texto {
+border-style: solid;
+border-color: white;
+border-width: 0.5px;
+padding: 30px;
+margin: 30px;
+background: #fff;
+height: 700px;
+box-shadow: 5px 8px;
+}
+
+.texto p{
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 15px;
+  width: 21cm;
+  height: 200px;
+
+}
+.texto h1{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #74f;
+}

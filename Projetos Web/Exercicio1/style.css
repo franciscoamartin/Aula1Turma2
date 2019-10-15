@@ -1,0 +1,81 @@
+body{
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  display: flex;
+  font-family: sans-serif;
+
+}
+.conteudo{
+  background: #ffffff30;
+   opacity: 0.5;
+   padding: 30px;
+  width: 280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  z-index: 9999;
+
+}
+
+.conteudo h1{
+  float: left;
+  font-size: 40px;
+  margin-bottom: 50px;
+  padding: 13px 0;
+  align-items: center;
+  color: #fff;
+  justify-content: center;
+
+
+}
+.inputTexto input{
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  float: left;
+  margin: 0 10px;
+
+
+
+}
+
+.inputTexto{
+  width: 100%;
+overflow: hidden;
+font-size: 20px;
+padding: 8px 0;
+margin: 8px 0;
+border-bottom: 1px solid #000;
+border-radius: 2px;
+color: #fff;
+
+}
+.btnLogin{
+width: 100%;
+background: none;
+border: 1px solid #000;
+padding: 5px;
+font-size: 18px;
+cursor: pointer;
+margin: 12px 0;
+align-items: center;
+justify-content: center;
+  color: #fff;
+}
+
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
