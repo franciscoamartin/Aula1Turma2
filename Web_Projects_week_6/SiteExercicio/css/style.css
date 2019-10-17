@@ -1,0 +1,23 @@
+body{
+  height:100vh;
+  background: linear-gradient(45deg, #E2C59B, #81CACD);
+
+}
+.row .card .col-12{
+  background-color:transparent;
+}
+.card{
+  background: #ffffffc7;
+  background-color:transparent;
+}
+.card-header{
+  font-family: 'Roboto';
+  color: #000000c2;
+}
+
+.col-md-12 {
+  margin-top: 20px;
+}
+.col-md-12 button{
+  margin: 20px;
+}

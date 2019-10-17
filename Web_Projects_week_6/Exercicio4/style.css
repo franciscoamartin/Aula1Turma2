@@ -1,7 +1,7 @@
 body{
   height:100vh; background: linear-gradient(45deg, #E2C59B, #81CACD);
   background-size: cover;
-  background-repeat: no-repeat;">
+  background-repeat: no-repeat;
 }
 .row .card .col-12{
   background-color:transparent;

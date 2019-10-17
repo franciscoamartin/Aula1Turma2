@@ -1,7 +1,7 @@
 
 $(document).ready(
   function(){
-    $('input[name="cpf"]').mask("000.000.000-00");
+    $('input[name="cpf"]').mask("000.000.000.00");
     $('input[type="button"]').click(function(){
       var idade = $('input[name="idade"]').val();
       var nome = $('input[name="nome"]').val();
