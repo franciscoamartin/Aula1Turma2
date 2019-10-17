@@ -1,7 +1,13 @@
 
 $(document).ready(
   function(){
-    $('#amount').mask('#.##0,00', {reverse: true});
+    $('#amount').mask('000.000.00', {reverse: true});
+
+
+
+
+
+
 
     $('button[type="button"]').click(function(){
       var reais = $('input[name="reais"]').val();
@@ -63,3 +69,5 @@ function convertCurrency(event) {
 }
 
 btn.addEventListener('click', convertCurrency);
+
+
