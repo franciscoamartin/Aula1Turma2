@@ -1,0 +1,16 @@
+body {
+    height: 100vh;
+    background: linear-gradient(45deg, #E2C59B, #81CACD);
+}
+
+.titulo {
+    align-content: center;
+    color: #666;
+    justify-content: center;
+}
+
+.btn {
+    align-content: center;
+    justify-content: center;
+    width: 100vh;
+}
