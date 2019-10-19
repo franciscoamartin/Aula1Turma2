@@ -47,13 +47,20 @@
                         <input type="text" class="form-control form-group" name="coloracao">
                     </div>
                 </div>
-
+                <div class="row ">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Imagem</span>
+                        </div>
+                        <span class="input-group-text">
+                        <input type='file' id="btnCarregar" onchange="readURL(this);" />
+                    </span></div>
+                    <img id="image" src="#" alt="" />
+                </div>
                 <div class="row">
                     <input name="btnCadastrar" class="btn  btn btn-success form-group" value="Salvar">
                     <input name="btnMostrar" class="btn  btn btn-success form-group" value="Mostrar">
-
                 </div>
-
             </div>
         </div>
     </div>

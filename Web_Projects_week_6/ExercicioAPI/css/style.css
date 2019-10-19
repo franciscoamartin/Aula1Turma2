@@ -14,3 +14,8 @@ body {
     justify-content: center;
     width: 100vh;
 }
+
+#image {
+    margin: 10px;
+    align-content: center;
+}
