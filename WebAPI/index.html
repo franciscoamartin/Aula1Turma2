@@ -1,77 +1,75 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cadastro de Pets</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link href="css/style.css" rel="stylesheet" />
 
+    <title>Web API</title>
+</head>
 <body>
 
     <div class="container-fluid h-100">
         <div class="row d-flex align-content-center justify-content-center h-100">
-            <div class="col-md-6">
-                <h1 class="titulo">Cadastro de Pets</h1>
+            <div class="col-md-6" id="tabela">
+                <h1 id="titulo" class="titulo">Busca Endereço</h1>
                 <!--3/12 tamanho da tela-->
-                <div class="row ">
+                <div class="row">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Nome</span>
+                            <span class="input-group-text">Digite o CEP</span>
                         </div>
-                        <input type="text" class="form-control form-group" name="nome">
+                        <input type="text" class="form-control form-group" id="cepentrada" size="10" maxlength="9" name="CEPEntrada">
                     </div>
                 </div>
-                <div class="row ">
+
+                <div class="row">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Idade</span>
+                            <span class="input-group-text">Bairro</span>
                         </div>
-                        <input type="text" class="form-control form-group" name="idade">
+                        <input type="text" class="form-control form-group" id="bairro" name="bairro">
                     </div>
-                </div>
-                <div class="row ">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Raça</span>
-                        </div>
-                        <input type="text" class="form-control form-group" name="raca">
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Coloração</span>
-                        </div>
-                        <input type="text" class="form-control form-group" name="coloracao">
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Imagem</span>
-                        </div>
-                        <span class="input-group-text">
-                        <input type='file' id="btnCarregar" onchange="readURL(this);" />
-                    </span>
-                    </div>
-                    <img id="image" src="#" alt="" />
                 </div>
                 <div class="row">
-                    <input name="btnCadastrar" class="h-50 btn  btn btn-success form-group" value="Salvar">
-                    <input name="btnMostrar" class="h-50 btn  btn btn-success form-group" value="Mostrar">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Localidade</span>
+                        </div>
+                        <input type="text" class="form-control form-group" id="localidade" name="localidade">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Logradouro</span>
+                        </div>
+                        <input type="text" class="form-control form-group" id="logradouro" name="logradouro">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">UF</span>
+                        </div>
+                        <input type="text" class="form-control form-group" id="uf" name="uf">
+                    </div>
+                </div>
+                <div class="row">
+                    <input id="btnMostrar" name="btnMostrar" class="h-50 btn btn btn-success" value="Mostrar">
 
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <script src="js/main.js"></script>
-</body>
+    <script src="js/script.js"></script>
 
+</body>
 </html>
