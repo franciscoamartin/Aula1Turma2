@@ -14,7 +14,8 @@ $(document).ready(
             var valor = bicicleta.valor = $('input[name="valor"]').val();
             var peso = bicicleta.peso = $('input[name="peso"]').val();
             alert("\nMarca da Bicicleta " + marca + "\nValor da Bicicleta: " + valor + "\nPeso da Bicicleta: " + peso);
-
+            var cleiton = ['asmdasjdasj'];
+            localStorage.setItem(cleiton, 'asmdasjdasj');
         });
 
         $('input[name="btnMostrar"]').click(function() {

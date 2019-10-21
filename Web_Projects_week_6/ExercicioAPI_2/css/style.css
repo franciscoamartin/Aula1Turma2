@@ -12,5 +12,6 @@ body {
 .btn {
     align-content: center;
     justify-content: center;
-    width: 100vh;
+    width: 50%;
+    display: flex;
 }
