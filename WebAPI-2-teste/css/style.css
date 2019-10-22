@@ -1,0 +1,26 @@
+.formulario {
+    align-content: center;
+    display: flex;
+    width: 100%;
+    color: red;
+}
+body {
+    height: 100vh;
+    background-image: linear-gradient(125deg, #e4afcb, #b8cbb8, #b8cbb8, #e6bf72, #cde288, #7edbdc);
+    animation: bganimation 15s infinite;
+    background-size: 400%;
+}
+
+@keyframes bganimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
