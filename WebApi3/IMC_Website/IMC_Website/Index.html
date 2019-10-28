@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link href="CSS/style.css" rel="stylesheet" />
-    <title>Calculadora IMC</title>
+    <link href="Styles/style.css" rel="stylesheet" />
+    <title>IMC Calculator</title>
 </head>
 <body>
     <div class="container-fluid h-100">
         <div class="row d-flex align-content-center justify-content-center h-100">
             <div class="col-md-3">
-                <h1 id="titulo">Calculadora IMC</h1>
 
-                <form name="formenviar" id="formenviar" method="get" send-post="">
 
+                <form id="form_principal">
                     <div class="row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Nome</span>
+                                <span class="input-group-text">Name</span>
                             </div>
-                            <input type="text" autofocus id="nome" class="form-control form-group" name="nome" placeholder="Seu Nome" />
+                            <input type="text" autofocus id="name" class="form-control form-group" name="Name" placeholder="Enter name" />
                         </div>
                     </div>
 
@@ -30,9 +29,9 @@
                     <div class="row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Peso</span>
+                                <span class="input-group-text">Weight</span>
                             </div>
-                            <input type="text" autofocus id="peso" class="form-control form-group" name="peso" placeholder="Seu Peso" />
+                            <input type="text" autofocus id="weight" class="form-control form-group" name="Weight" placeholder="Enter weight" />
                         </div>
                     </div>
 
@@ -40,23 +39,27 @@
                     <div class="row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Altura</span>
+                                <span class="input-group-text">Height</span>
                             </div>
-                            <input type="text" id="altura" autofocus class="form-control form-group" name="altura" placeholder="Sua Altura" />
+                            <input type="text" id="height" autofocus class="form-control form-group" name="Height" placeholder="Enter height" />
                         </div>
                     </div>
 
+
+
                     <div class="row">
-                        <input type="button" id="show" name="show" class="btn btn-danger w-50 form-group" value="Mostrar" />
-                        <input type="button" id="limpar" name="limpar" class="btn btn-danger w-50 form-group" value="Limpar" />
+                        <input type="button" id="show" name="btnshow" class="btn btn-danger w-50 form-group" value="Calculate IMC" />
+                        <input type="button" id="clear" name="btnclear" class="btn btn-danger w-50 form-group" value="Clear" />
                     </div>
+
+
 
                     <div class="row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">IMC: </span>
+                                <span class="input-group-text">IMC</span>
                             </div>
-                            <input type="text" id="resultadoIMC" autofocus class="form-control form-group" placeholder="Resultado" name="resultadoIMC" disabled />
+                            <input type="text" id="imc" autofocus class="form-control form-group" name="imc" placeholder="Enter your data to apply" disabled />
                         </div>
                     </div>
 
@@ -68,7 +71,12 @@
                             <input type="text" id="msg" autofocus class="form-control form-group" name="msg" placeholder="Enter your data to apply" disabled />
                         </div>
                     </div>
+
+
                 </form>
+
+
+
             </div>
         </div>
     </div>
@@ -78,6 +86,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 
-    <script src=" JS/script.js"></script>
+    <script src=" Scripts/script.js"></script>
 </body>
 </html>
