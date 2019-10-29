@@ -1,0 +1,15 @@
+new solution
+add projeto web api net framework e web api e sem https
+add classe propriedades com [key]
+add contextdb 
+    public class EnderecoContextDB : DbContext
+    {
+        public DbSet<Endereco> Enderecos { get; set; }
+
+    }
+
+rebuild 
+add dentro da controller new controller.. 
+selecionar classe propriedade
+e selecionar context.
+e testar
