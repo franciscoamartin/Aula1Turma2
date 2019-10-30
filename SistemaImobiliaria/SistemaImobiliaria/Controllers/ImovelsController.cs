@@ -8,49 +8,48 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using BancoExistente.Models;
+using SistemaImobiliaria.Models;
 
-namespace BancoExistente.Controllers
+namespace SistemaImobiliaria.Controllers
 {
-    public partial class CarroesController : ApiController
+    public class ImovelsController : ApiController
     {
-        private DataBaseContext db = new DataBaseContext();
+        private ImobiliariaContext db = new ImobiliariaContext();
 
-        
-        // GET: api/Carroes
-        public IQueryable<Carro> GetCarros()
+        // GET: api/Imovels
+        public IQueryable<Imovel> GetGetImovels()
         {
-            return db.Carros;
+            return db.GetImovels;
         }
 
-        // GET: api/Carroes/5
-        [ResponseType(typeof(Carro))]
-        public IHttpActionResult GetCarro(int id)
+        // GET: api/Imovels/5
+        [ResponseType(typeof(Imovel))]
+        public IHttpActionResult GetImovel(int id)
         {
-            Carro carro = db.Carros.Find(id);
-            if (carro == null)
+            Imovel imovel = db.GetImovels.Find(id);
+            if (imovel == null)
             {
                 return NotFound();
             }
 
-            return Ok(carro);
+            return Ok(imovel);
         }
 
-        // PUT: api/Carroes/5
+        // PUT: api/Imovels/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCarro(int id, Carro carro)
+        public IHttpActionResult PutImovel(int id, Imovel imovel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != carro.Id)
+            if (id != imovel.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(carro).State = EntityState.Modified;
+            db.Entry(imovel).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +57,7 @@ namespace BancoExistente.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CarroExists(id))
+                if (!ImovelExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +70,35 @@ namespace BancoExistente.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Carroes
-        [ResponseType(typeof(Carro))]
-        public IHttpActionResult PostCarro(Carro carro)
+        // POST: api/Imovels
+        [ResponseType(typeof(Imovel))]
+        public IHttpActionResult PostImovel(Imovel imovel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Carros.Add(carro);
+            db.GetImovels.Add(imovel);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = carro.Id }, carro);
+            return CreatedAtRoute("DefaultApi", new { id = imovel.Id }, imovel);
         }
 
-        // DELETE: api/Carroes/5
-        [ResponseType(typeof(Carro))]
-        public IHttpActionResult DeleteCarro(int id)
+        // DELETE: api/Imovels/5
+        [ResponseType(typeof(Imovel))]
+        public IHttpActionResult DeleteImovel(int id)
         {
-            Carro carro = db.Carros.Find(id);
-            if (carro == null)
+            Imovel imovel = db.GetImovels.Find(id);
+            if (imovel == null)
             {
                 return NotFound();
             }
 
-            db.Carros.Remove(carro);
+            db.GetImovels.Remove(imovel);
             db.SaveChanges();
 
-            return Ok(carro);
+            return Ok(imovel);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +110,9 @@ namespace BancoExistente.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CarroExists(int id)
+        private bool ImovelExists(int id)
         {
-            return db.Carros.Count(e => e.Id == id) > 0;
+            return db.GetImovels.Count(e => e.Id == id) > 0;
         }
     }
 }

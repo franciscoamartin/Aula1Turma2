@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{98DD6313-0383-4479-A4AC-9D42DF6AAA84}</ProjectGuid>
+    <ProjectGuid>{A1274C2F-B203-4AE8-B5BD-7F16D878CF97}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BancoExistente</RootNamespace>
-    <AssemblyName>BancoExistente</AssemblyName>
+    <RootNamespace>SistemaImoveis</RootNamespace>
+    <AssemblyName>SistemaImoveis</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -162,22 +162,28 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\CarroesController.cs" />
-    <Compile Include="Controllers\CustomCarroes.cs" />
-    <Compile Include="Controllers\CustomMarcas.cs" />
-    <Compile Include="Controllers\CustomUsuarios.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MarcasController.cs" />
-    <Compile Include="Controllers\UsuariosController.cs" />
-    <Compile Include="Controllers\VendasController.cs" />
+    <Compile Include="Controllers\ImovelsController.cs" />
+    <Compile Include="Controllers\ProprietariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Carro.cs" />
-    <Compile Include="Models\DataBaseContext.cs" />
-    <Compile Include="Models\Marca.cs" />
-    <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\Venda.cs" />
+    <Compile Include="Migrations\201910301824200_AddProject.cs" />
+    <Compile Include="Migrations\201910301824200_AddProject.Designer.cs">
+      <DependentUpon>201910301824200_AddProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301838231_Test.cs" />
+    <Compile Include="Migrations\201910301838231_Test.Designer.cs">
+      <DependentUpon>201910301838231_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301843099_tet.cs" />
+    <Compile Include="Migrations\201910301843099_tet.Designer.cs">
+      <DependentUpon>201910301843099_tet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Imovel.cs" />
+    <Compile Include="Models\ImobiliariaContext.cs" />
+    <Compile Include="Models\Proprietarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +269,17 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910301824200_AddProject.resx">
+      <DependentUpon>201910301824200_AddProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301838231_Test.resx">
+      <DependentUpon>201910301838231_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301843099_tet.resx">
+      <DependentUpon>201910301843099_tet.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -279,9 +296,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55209</DevelopmentServerPort>
+          <DevelopmentServerPort>64396</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55209/</IISUrl>
+          <IISUrl>http://localhost:64396/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
