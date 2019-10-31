@@ -1,0 +1,101 @@
+new solution
+add project
+asp net web api net framework
+web api sem https
+create class propriedades - get-set
+add key annotations 
+create context exemploContext - uso geral para as propriedades
+:dbContex
+public virtual DbSet<ClassePropriedades> Exemplo{ get; set; }
+rebuild
+add Controller na pasta controll usando empty 2 net framework 
+model class as propriedades e data context o ExemploContext
+migrations console
+Enable-Migrations
+se houver erro instalar net framework novamente
+PM> Uninstall-Package EntityFramework -Force
+
+PM> Install-Package EntityFramework -Pre
+
+Add-Migration
+renomear
+Update-DataBase
+verificar se criou a base de dados no server
+e add em context a referencia public virtual DbSet<ClassePropriedades> Exemplo{ get; set; }
+rebuild
+add controller de uma segunda propriedade criada
+gerar migration novamente
+rodar projeto no browser
+usar postman via Get
+http://localhost:49199/api/exemplo
+dentro de configurations em Migrations
+add dentro de seed por exemplo abaixo um default onde ira criar dados padrao de
+ entrada onde nao será adicionado toda vez que iniciar 
+
+protected override void Seed(ImoveisProprietarios.Models.ImobiliariaContext context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
+            //  to avoid creating duplicate seed data.
+
+            var listProprietarios = new List<Proprietarios>()
+            {
+                new Proprietarios()
+                {
+                    Nome = "Francisco",
+                    Email = "teste@teste.com",
+                    DataNascimento = DateTime.Now
+                },
+
+                new Proprietarios()
+                {
+                    Nome = "Teste2",
+                    Email = "teste2@teste.com",
+                    DataNascimento = DateTime.Now
+                }
+            };
+
+
+            listProprietarios.ForEach(s => context.Proprietarios.AddOrUpdate(x => x.Nome, s)
+            );
+            context.SaveChanges();
+
+            var listaImoveis = new List<Imoveis>()
+            {
+                new Imoveis()
+                {
+                Cep = "88048301",
+                Bairro = "Centro",
+                Municipio = "Blumenau",
+                Complemento = "casa",
+                Numero = "200",
+                Logradouro = "Rua teste",
+                ProprietarioId = context.Proprietarios.FirstOrDefault(x => x.Nome == "Francisco").Id
+
+                },
+
+                new Imoveis()
+                {
+                Cep = "88048300",
+                Bairro = "Centro",
+                Municipio = "Blumenau",
+                Complemento = "casa",
+                Numero = "20",
+                Logradouro = "Rua teste2",
+                ProprietarioId = context.Proprietarios.FirstOrDefault(x => x.Nome == "Teste2").Id
+
+                }
+            };
+
+            listaImoveis.ForEach(s => context.Imoveis.AddOrUpdate(x => new { x.ProprietarioId, x.Cep }, s)
+           );
+
+            context.SaveChanges();
+        }
+    }
+}
+
+
+
+

@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201910301932283_AddProject.designer.cs">
       <DependentUpon>201910301932283_AddProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910311246253_teste.cs" />
+    <Compile Include="Migrations\201910311246253_teste.designer.cs">
+      <DependentUpon>201910311246253_teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImobiliariaContext.cs" />
     <Compile Include="Models\Imovel.cs" />
@@ -264,6 +268,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910301932283_AddProject.resx">
       <DependentUpon>201910301932283_AddProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311246253_teste.resx">
+      <DependentUpon>201910311246253_teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
