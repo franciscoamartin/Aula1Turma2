@@ -1,5 +1,6 @@
 namespace ConsultaTraduzida.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -27,6 +28,7 @@ namespace ConsultaTraduzida.Models
 
         public DateTime DatAlt { get; set; }
 
+        [JsonIgnore]
         public virtual Carros Carros { get; set; }
     }
 }

@@ -6,6 +6,9 @@ using System.Web.Http;
 
 namespace ConsultaTraduzida.Controllers
 {
+    //[RoutePrefix("Api/Carroes")] pode se utilizar uma rota padrao de entrada fixa
+    // InnerJoinContext db = InnerJoinContext();
+
     public partial class CarrosController
     {
 
@@ -109,12 +112,16 @@ namespace ConsultaTraduzida.Controllers
                                       CarrosId = car.Id,
                                       CarroNome = car.Modelo,
                                       Ano = ven.DatInc.Year,
-                                      Usuario = usu.Usuario
+                                      Usuario = usu.Usuario,
+                                      Quantidade = ven.Quantidade,
+                                      Valor = ven.Valor,
+                                      Total = ven.Quantidade * ven.Valor
+
                                   };
             return conteudoRetorno;
         }
 
-
+        //segunda forma de obter vendas por ano sem entrada
         [HttpGet]
         [Route("Api/Carroes/Vendas/VendasPorAno")]
         public object RelatorioVendasPorAno()
@@ -124,14 +131,14 @@ namespace ConsultaTraduzida.Controllers
             var listaDeUsuarios = db.Usuarios.ToList();
 
 
-            var conteudoRetorno = from ven in listaDeVendas //Link to Entities
+            var conteudoRetorno = from ven in listaDeVendas //Linq to Entities
                                   join car in listaDeCarros
                                   on ven.Carro equals car.Id
                                   join usu in listaDeUsuarios
                                   on ven.UsuInc equals usu.Id
                                   orderby ven.Quantidade descending
                                   group new { ven } by new { ven.DatInc.Year, ven.UsuInc } into groupby
-                                  select new//tipos anonimos
+                                  select new//objetos anonimos
                                   {
                                       AnoVenda = groupby.Key.Year, 
                                       UsuarioVenda = groupby.Key.UsuInc,
@@ -174,7 +181,38 @@ namespace ConsultaTraduzida.Controllers
                                   };
             return conteudoRetorno;
         }
+        //versao 2 de busca por marca e ano
+        [HttpGet]
+        [Route("Api/PorMarcas/{ano}/{marca}")]
+        public object RelAnoMarca(int ano, int marca)
+        {
+            var listaVendas = db
+                .Vendas
+                .Where(x =>
+                x.DatInc.Year == ano).ToList();
 
+            var listaCarro = db
+                .Carros
+                .Where(x => x.Marca == marca).ToList();
 
+            var listaMarca = db.Marcas.ToList();
+
+            var conteudoRetorno = from ven in listaVendas
+                                  join car in listaCarro
+                                  on ven.Carro equals car.Id
+                                  join mar in listaMarca
+                                  on car.Marca equals mar.Id
+                                  group new { ven, car, mar }
+                                  by new { ven.DatInc.Month, mar.Nome }
+                                  into ingroup
+                                  select new
+                                  {
+                                      PeriodoVenda = ingroup.Key.Month,
+                                      MarcaVenda = ingroup.Key.Nome,
+                                      ValorTotalVendas = ingroup.Sum(x => x.ven.Quantidade * x.ven.Valor)
+                                  };
+
+            return conteudoRetorno.OrderByDescending(x => x.ValorTotalVendas);
+        }
     }
 }
