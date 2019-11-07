@@ -7,21 +7,11 @@ body {
     align-content: center;
     color: #666;
     justify-content: center;
-    display: flex;
 }
 
 .btn {
     align-content: center;
     justify-content: center;
-    display: flex;
     width: 50%;
-}
-
-#image {
-    margin: 10px;
-    align-content: center;
-}
-
-.input-group-prepend {
-    width: 60px;
+    display: flex;
 }

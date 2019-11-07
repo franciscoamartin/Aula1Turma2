@@ -1,0 +1,13 @@
+﻿
+body {
+    height: 100vh;
+    background-color: azure;
+    /*background-image: url('https://images-na.ssl-images-amazon.com/images/I/515KITJORuL._SX425_.jpg');*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#titulo{
+    display: flex;
+    text-align:center;
+    color: #000;
+}
