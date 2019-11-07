@@ -250,6 +250,45 @@ addCurrencyBtn.addEventListener("click", addCurrencyBtnClick);
 function addCurrencyBtnClick(event) {
     addCurrencyBtn.classList.toggle("open")
 }
+
+addCurrencyList.addEventListener("click", addCurrencyListClick);
+
+function addCurrencyListClick(event) {
+    const clickedListItem = event.target.closest("li");
+    if (!clickedListItem.classList.contains("disabled")) {
+        const newCurrency = currencies.find(c => c.abbreviation === clickedListItem.getAttribute("data-currency"));
+        if (newCurrency) newCurrenciesListItem(newCurrency);
+    }
+}
+
+currenciesList.addEventListener("click", currenciesListClick);
+
+function currenciesListClick(event) {
+    if (event.target.classList.contains("close")) {
+        const parentNode = event.target.parentNode;
+        parentNode.remove();
+        addCurrencyList.querySelector(`[data-currency=${parentNode.id}]`).classList.remove("disabled");
+        if (parentNode.classList.contains("base-currency")) {
+            const newBaseCurrencyLI = currenciesList.querySelector(".currency");
+            if (newBaseCurrencyLI) {
+                setNewBaseCurrency(newBaseCurrencyLI);
+                baseCurrencyAmount = Number(setNewBaseCurrencyLI.querySelector(".input input").value);
+            }
+        }
+    }
+}
+
+function setNewBaseCurrency(newBaseCurrencyLI) {
+    newBaseCurrencyLI.classList.add("base-currency");
+    baseCurrency = newBaseCurrencyLI.id;
+    const baseCurrencyRate = currencies.find(currency => currency.abbreviation === baseCurrency).rate;
+    currenciesList.querySelectorAll(".currency").forEach(currencyLI => {
+        const currencyRate = currencies.find(currency => currency.abbreviation === currencyLI.id).rate;
+        const exchangeRate = currencyLI.id === baseCurrency ? 1 : (currencyRate / baseCurrencyRate).toFixed(4);
+        currencyLI.querySelector(".base-currency-rate").textContent = `1 ${baseCurrency} = ${exchangeRate} ${currencyLI.id}`;
+    });
+}
+
 //funcoes auxiliares
 function populateAddCurrencyList() {
     for (let i = 0; i < currencies.length; i++) {
